@@ -1,5 +1,3 @@
-
-
 interface ButtonProps {
   /**
    * What background color to use
@@ -8,7 +6,7 @@ interface ButtonProps {
   /**
    * How large should the button be?
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   /**
    * Button contents
    */
@@ -23,15 +21,21 @@ interface ButtonProps {
  * Primary UI component for user interaction
  */
 export const Button = ({
-  size = 'medium',
-  backgroundColor,
+  size = "medium",
+  backgroundColor = "bg-blue-500",
   label,
   ...props
 }: ButtonProps) => {
+  const sizeClasses = {
+    small: "py-1 px-2 text-sm",
+    medium: "py-2 px-4 text-base",
+    large: "py-3 px-6 text-lg",
+  };
+
   return (
     <button
       type="button"
-      style={{ backgroundColor }}
+      className={`${backgroundColor} text-white font-semibold rounded ${sizeClasses[size]}`}
       {...props}
     >
       {label}
