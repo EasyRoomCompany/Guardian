@@ -25,9 +25,11 @@ Pessoas que contribuíram com este projeto:
 | Joel Lacerda    | Desenvolvedor     | <img src="https://github.com/joellacerda.png" width="50">       |
 | Christian Sousa | Desenvolvedor     | <img src="https://github.com/christiansousadev.png" width="50"> |
 | Enzo Gomezz     | Desenvolvedor     | <img src="https://github.com/enzogomezz.png" width="50">        |
-| Mikael Monteiro | Desenvolvedor     | <img src="https://github.com/mikaelmonteirodev.png" width="50">
+| Mikael Monteiro | Desenvolvedor     | <img src="https://github.com/mikaelmonteirodev.png" width="50"> |
 
+## Licença
 
+MIT
 
 
 
