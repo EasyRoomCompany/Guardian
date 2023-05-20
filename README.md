@@ -4,9 +4,7 @@
 
 ## Descrição do projeto
 
-Uma aplicação web para gerenciamento de salas/espaços para eventos (reuniões, treinamentos, conferências, etc).
-
-A aplicação consiste em funcionalidades que permitem agendar e reservar salas online.
+Este projeto consiste em uma aplicação web responsiva que permite agendar e reservar salas/espaços para eventos (reuniões, treinamentos, conferências, etc).
 
 ## Como colocar para executar a aplicação
 
@@ -16,6 +14,21 @@ A aplicação consiste em funcionalidades que permitem agendar e reservar salas 
 
 ## Contribuidores
 
-Todos os agradecimentos para as pessoas que contribuíram com este projeto:
+Pessoas que contribuíram com este projeto:
 
-[![Contributors](https://contributors-img.web.app/image?repo=HackathonTeam05/Guardian)](https://github.com/HackathonTeam05/Guardian/graphs/contributors)
+| Nome | Função | Foto |
+| --------------- | ----------------- | --------------------------------------------------------------- |
+| Gabriel Sousa   | Marketing         | <img src="https://github.com/gabriellsousa.png" width="50">     |
+| Ivanna Prata    | Analista de Dados | <img src="https://github.com/ivannaprata.png" width="50">       |
+| Fabiano Melo    | Analista de Dados | <img src="https://github.com/fabianopmelo.png" width="50">      |
+| Kevin Sousa     | Desenvolvedor     | <img src="https://github.com/kevinDsousa.png" width="50">       |
+| Joel Lacerda    | Desenvolvedor     | <img src="https://github.com/joellacerda.png" width="50">       |
+| Christian Sousa | Desenvolvedor     | <img src="https://github.com/christiansousadev.png" width="50"> |
+| Enzo Gomezz     | Desenvolvedor     | <img src="https://github.com/enzogomezz.png" width="50">        |
+| Mikael Monteiro | Desenvolvedor     | <img src="https://github.com/mikaelmonteirodev.png" width="50">
+
+
+
+
+
+
