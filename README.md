@@ -17,15 +17,15 @@ Este projeto consiste em uma aplicação web responsiva que permite agendar e re
 Pessoas que contribuíram com este projeto:
 
 | Nome | Função | Foto |
-| --------------- | ----------------- | --------------------------------------------------------------- |
-| Gabriel Sousa   | Marketing         | <img src="https://github.com/gabriellsousa.png" width="50">     |
-| Ivanna Prata    | Analista de Dados | <img src="https://github.com/ivannaprata.png" width="50">       |
-| Fabiano Melo    | Analista de Dados | <img src="https://github.com/fabianopmelo.png" width="50">      |
-| Kevin Sousa     | Desenvolvedor     | <img src="https://github.com/kevinDsousa.png" width="50">       |
-| Joel Lacerda    | Desenvolvedor     | <img src="https://github.com/joellacerda.png" width="50">       |
-| Christian Sousa | Desenvolvedor     | <img src="https://github.com/christiansousadev.png" width="50"> |
-| Enzo Gomezz     | Desenvolvedor     | <img src="https://github.com/enzogomezz.png" width="50">        |
-| Mikael Monteiro | Desenvolvedor     | <img src="https://github.com/mikaelmonteirodev.png" width="50"> |
+| --- | --- | --- |
+| <a href="https://github.com/gabriellsousa">Gabriel Sousa</a>| Marketing| <a href="https://github.com/gabriellsousa"><img src="https://github.com/gabriellsousa.png" width="50" style="border-radius:50%"></a> |
+| <a href="https://github.com/ivannaprata">Ivanna Prata</a> | Analista de Dados |  <a href="https://github.com/ivannaprata"><img src="https://github.com/ivannaprata.png" width="50" style="border-radius:50%"></a> |
+| <a href="https://github.com/fabianopmelo">Fabiano Melo</a> | Analista de Dados | <a href="https://github.com/fabianopmelo"><img src="https://github.com/fabianopmelo.png" width="50" style="border-radius:50%"></a> |
+| <a href="https://github.com/kevinDsousa">Kevin Sousa</a> | Desenvolvedor |  <a href="https://github.com/kevinDsousa"><img src="https://github.com/kevinDsousa.png" width="50" style="border-radius:50%"></a> |
+| <a href="https://github.com/joellacerda">Joel Lacerda</a> | Desenvolvedor | <a href="https://github.com/joellacerda"><img src="https://github.com/joellacerda.png" width="50" style="border-radius:50%"></a> |
+| <a href="https://github.com/christiansousadev">Christian Sousa</a> | Desenvolvedor | <a href="https://github.com/christiansousadev"><img src="https://github.com/christiansousadev.png" width="50" style="border-radius:50%"></a> |
+| <a href="https://github.com/enzogomezz">Enzo Gomezz</a> | Desenvolvedor | <a href="https://github.com/enzogomezz"><img src="https://github.com/enzogomezz.png" width="50" style="border-radius:50%"></a> |
+| <a href="https://github.com/mikaelmonteirodev">Mikael Monteiro</a> |Desenvolvedor | <a href="https://github.com/mikaelmonteirodev"><img src="https://github.com/mikaelmonteirodev.png" width="50" style="border-radius:50%"></a> |
 
 ## Licença
 
