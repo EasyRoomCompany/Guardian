@@ -1,32 +1,28 @@
-import React, { InputHTMLAttributes } from 'react';
-
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface InputProps {
   /**
-   * Estilo do componente
+   * The Tailwind classes to style the input
    */
-  style?: React.CSSProperties;
+  style?: string;
   /**
-   * Typo de imput a ser implementado
+   * The type of input to render
    */
   type?: string;
   /**
-   * Placeholder do input
+   * The placeholder text for the input
    */
   placeholder?: string;
 }
 
 /**
- * Componente capaz de gerar um input padrão escolhendo seu tipo com base nas propriedades.
+ * UI component for rendering a standard input field of any type based on provided properties.
  */
-const Input: React.FC<InputProps> = ({ style, type, placeholder, ...rest }) => {
+export const Input = ({
+  style = "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5",
+  type,
+  placeholder,
+  ...props
+}: InputProps) => {
   return (
-    <input
-      style={style}
-      type={type}
-      placeholder={placeholder}
-      {...rest}
-    />
+    <input className={style} type={type} placeholder={placeholder} {...props} />
   );
 };
-
-export default Input;
