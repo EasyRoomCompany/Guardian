@@ -1,3 +1,5 @@
+import React from "react";
+
 interface ButtonProps {
   /**
    * What background color to use
@@ -20,22 +22,27 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
+export const Button: React.FC<ButtonProps> = ({
   size = "medium",
-  backgroundColor = "bg-blue-500",
+  backgroundColor = "blue",
   label,
   ...props
-}: ButtonProps) => {
+}) => {
   const sizeClasses = {
     small: "py-1 px-2 text-sm",
     medium: "py-2 px-4 text-base",
     large: "py-3 px-6 text-lg",
   };
 
+  const buttonStyle = {
+    backgroundColor,
+  };
+
   return (
     <button
       type="button"
-      className={`${backgroundColor} text-white font-semibold rounded ${sizeClasses[size]}`}
+      className={`text-white font-semibold rounded ${sizeClasses[size]}`}
+      style={buttonStyle}
       {...props}
     >
       {label}
