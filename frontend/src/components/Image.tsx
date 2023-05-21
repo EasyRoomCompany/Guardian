@@ -31,7 +31,7 @@ export const Image = ({
     <img
       src={src}
       alt={alt}
-      className={`${width} ${height} object-cover rounded-full`}
+      className={`${width} ${height} object-cover rounded`}
       {...props}
     />
   );
