@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input } from "../components/Input";
 import { ThemeToggleButton } from "../components/ThemeToggleButton"; // Import the theme toggle button
 
-const LoginPage: React.FC = () => {
+export const LoginPage: React.FC = () => {
   const [theme, setTheme] = useState<string>("light");
 
   interface ThemeColors {
@@ -94,5 +94,3 @@ const LoginPage: React.FC = () => {
     </div>
   );
 };
-
-export default LoginPage;
