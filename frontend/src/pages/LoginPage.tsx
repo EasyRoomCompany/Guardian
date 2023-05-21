@@ -15,6 +15,11 @@ export const LoginPage: React.FC = () => {
     navigate("/dashboard");
   };
 
+  const handleSignUp = () => {
+    // Navigate to the Register page
+    navigate("/register");
+  };
+
   interface ThemeColors {
     [key: string]: string;
     light: string;
@@ -98,6 +103,7 @@ export const LoginPage: React.FC = () => {
               Sign In
             </button>
             <button
+              onClick={handleSignUp}
               className={`mt-4 w-full p-2 rounded-lg text-sm focus:outline-none border border-orange-500 ${themeColors[theme]}`}
             >
               Sign Up
