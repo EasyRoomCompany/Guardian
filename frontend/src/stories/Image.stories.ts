@@ -6,7 +6,7 @@ import { Image } from '../components/Image';
  * To implement this component we need to pass the path of the desired image and fill in the ALT parameter so that the browser understands the image
  */
 const meta = {
-  title: 'Example/Image',
+  title: 'Components/Image',
   component: Image,
   tags: ['autodocs'],
 } satisfies Meta<typeof Image>;

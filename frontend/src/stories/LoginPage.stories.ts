@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemeToggleButton } from '../components/ThemeToggleButton';
+import { LoginPage } from '../pages/LoginPage';
 
 /**
  * The input component is capable of adapting itself according to its type, and its entire tailwind class can be implemented or left only in the default
  */
 const meta = {
-    title: 'Components/ThemeToggleButton',
-    component: ThemeToggleButton,
+    title: 'Pages/LoginPage',
+    component: LoginPage,
     tags: ['autodocs'],
 } satisfies Meta<typeof Image>;
 
@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
  */
 export const ThemeToggleButton_component: Story = {
     args: {
-        theme: 'light',
+        theme: 'dark',
         onClick: () => alert('Tema alterado')
         },
 };

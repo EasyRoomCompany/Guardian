@@ -6,7 +6,7 @@ import { Input } from '../components/Input';
  * The input component is capable of adapting itself according to its type, and its entire tailwind class can be implemented or left only in the default
  */
 const meta = {
-    title: 'Example/Input',
+    title: 'Components/Input',
     component: Input,
     tags: ['autodocs'],
 } satisfies Meta<typeof Image>;
