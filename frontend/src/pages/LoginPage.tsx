@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import { Input } from "../components/Input";
-import { ThemeToggleButton } from "../components/ThemeToggleButton"; // Import the theme toggle button
+import { ThemeToggleButton } from "../components/ThemeToggleButton";
+import { useNavigate } from "react-router-dom";
 
 export const LoginPage: React.FC = () => {
   const [theme, setTheme] = useState<string>("light");
+  const navigate = useNavigate();
+
+  const handleSignIn = (event: React.FormEvent) => {
+    event.preventDefault();
+    // Here, you would usually authenticate the user
+
+    // If the authentication is successful, navigate to the Dashboard page
+    navigate("/dashboard");
+  };
 
   interface ThemeColors {
-    [key: string]: string; // This is an index signature
+    [key: string]: string;
     light: string;
     dark: string;
   }
@@ -16,8 +26,7 @@ export const LoginPage: React.FC = () => {
     dark: "bg-gray-900 text-white",
   };
 
-  // Then you can use a string as a key to get values from themeColors
-  const color = themeColors[theme]; // theme is a string
+  const color = themeColors[theme];
 
   return (
     <div
@@ -32,7 +41,12 @@ export const LoginPage: React.FC = () => {
             Sign in to your account
           </h2>
         </div>
-        <form className="mt-8 space-y-6" action="#" method="POST">
+        <form
+          className="mt-8 space-y-6"
+          action="#"
+          method="POST"
+          onSubmit={handleSignIn}
+        >
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -84,7 +98,7 @@ export const LoginPage: React.FC = () => {
               Sign In
             </button>
             <button
-              className={`mt-4 w-full p-2 rounded-lg focus:outline-none border border-orange-500 ${themeColors[theme]}`}
+              className={`mt-4 w-full p-2 rounded-lg text-sm focus:outline-none border border-orange-500 ${themeColors[theme]}`}
             >
               Sign Up
             </button>
