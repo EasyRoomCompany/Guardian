@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 interface ThemeToggleButtonProps {
   /**
    * Current theme of the application
@@ -7,6 +9,14 @@ interface ThemeToggleButtonProps {
    * Function to set the current theme
    */
   setTheme: React.Dispatch<React.SetStateAction<string>>;
+  /**
+   * State of the button
+   */
+  stateBtn?: boolean;
+  /**
+   * Click handler for the button
+   */
+  onClick?: (isActive: boolean) => void;
 }
 
 /**
@@ -14,14 +24,30 @@ interface ThemeToggleButtonProps {
  */
 export const ThemeToggleButton = ({
   theme,
-  setTheme,
+  stateBtn,
+  onClick,
+  setTheme
 }: ThemeToggleButtonProps) => {
+  const [clicked, setClicked] = useState(stateBtn);
+
+  const handleClick = () => {
+    setClicked(!clicked);
+    if (onClick) {
+      onClick(!clicked);
+    }
+    setThemeClick();
+  };
+
+  const setThemeClick = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   return (
     <button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={handleClick}
       className="p-2 bg-orange-500 text-white rounded-lg focus:outline-none"
     >
-      {theme === "light" ? "Dark Mode" : "Light Mode"}
+      {clicked ? "Dark Mode" : "Light Mode"}
     </button>
   );
 };

@@ -2,9 +2,12 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Button } from '../components/Button';
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
+/**
+ * here it is possible to see the interaction of the button component.
+To implement it just replace the **alert**
+ */
 const meta = {
-  title: 'Example/Button',
+  title: 'Components/Button',
   component: Button,
   tags: ['autodocs'],
 } satisfies Meta<typeof Button>;
@@ -12,11 +15,38 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// More on writing stories with args: https://storybook.js.org/docs/react/writing-stories/args
-
+/**
+ * Button default large
+ */
 export const Large: Story = {
   args: {
     size: 'large',
-    label: 'Button',
+    label: 'Large Button',
+    backgroundColor: 'red',
+    onClick: () => alert(`Testando o clique do botão Vermelho`)
+  },
+};
+
+/**
+ * Button default medium
+ */
+export const Medium: Story = {
+  args: {
+    size: 'medium',
+    label: 'Medium Button',
+    backgroundColor: 'blue',
+    onClick: () => alert('Testando o clique do botão Azul')
+  },
+};
+
+/**
+ * Button default small
+ */
+export const Small: Story = {
+  args: {
+    size: 'small',
+    label: 'Small Button',
+    backgroundColor: 'green',
+    onClick: () => alert('Testando o clique do botão Verde')
   },
 };
