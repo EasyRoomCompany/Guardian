@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon backend/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pg": "^8.11.0",
-    "pg-hstore": "^2.3.4",
-    "sequelize": "^6.31.1"
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
   }
 }
