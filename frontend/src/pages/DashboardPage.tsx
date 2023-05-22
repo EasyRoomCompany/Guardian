@@ -7,6 +7,7 @@ import { ThemeToggleButton } from "../components/ThemeToggleButton";
 import { Statistics } from "../components/Statistics";
 import { RecentActivities } from "../components/RecentActivities";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
 
 export const DashboardPage = () => {
   const [theme, setTheme] = useState<string>("light");
@@ -20,6 +21,15 @@ export const DashboardPage = () => {
   // const handleSectionChange = (newSection) => {
   //   setSection(newSection);
   // };
+
+  // Fictitious data for RecentActivities component
+  // const activities = [
+  //   { id: 1, description: 'User1 created Room A.' },
+  //   { id: 2, description: 'User2 joined Room B.' },
+  //   { id: 3, description: 'User3 left Room C.' },
+  //   { id: 4, description: 'User4 created Event X in Room A.' },
+  //   Add more activities as needed...
+  // ];
 
   interface ThemeColors {
     [key: string]: string;
@@ -38,6 +48,7 @@ export const DashboardPage = () => {
     <div className={`dashboard ${color}`}>
       <div className="top-bar flex justify-between items-center px-4 py-2">
         <div className="user-info flex items-center space-x-4">
+          <h1 className="text-2xl font-semibold">EASYROOM</h1>
           <span>Welcome, User Name</span>
         </div>
         <div className="controls flex items-center space-x-4">
@@ -47,35 +58,9 @@ export const DashboardPage = () => {
       </div>
 
       <div className="dashboard-body flex">
-        <nav className="sidebar w-64 text-white p-4">
-          {/* <button
-            onClick={() => handleSectionChange("users")}
-            className="btn btn-blue"
-          >
-            Users
-          </button>
-          */}
-          {/* <button
-            onClick={() => handleSectionChange("rooms")}
-            className="btn btn-blue"
-          >
-            Rooms
-          </button>
-          */}
-          {/* <button
-            onClick={() => handleSectionChange("events")}
-            className="btn btn-blue"
-          >
-            Events
-          </button>
-          */}
-        </nav>
+        <Navbar />
         <div className="dashboard-content flex-grow p-4">
-          {/* {section === "users" && <UsersSection />} */}
-          {/* {section === "rooms" && <RoomsSection />} */}
-          {/* {section === "events" && <EventsSection />} */}
           <div className="statistics flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-4 my-4">
-            {/* Replace the placeholders below with your actual components */}
             <Statistics title="Current Rooms in Use" value={42} />
             <Statistics title="Events Occurred" value={122} />
             <Statistics title="Number of Users" value={61} />
