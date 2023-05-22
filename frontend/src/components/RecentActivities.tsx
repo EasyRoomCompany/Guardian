@@ -1,8 +1,7 @@
-// RecentActivities.tsx
 interface Activity {
   id: number;
   description: string;
-  timestamp: string;
+  timestamp: Date;
 }
 
 interface RecentActivitiesProps {
@@ -19,7 +18,9 @@ export const RecentActivities = ({ activities }: RecentActivitiesProps) => {
         {activities.map((activity) => (
           <li key={activity.id} className="mb-2">
             <p className="text-sm">{activity.description}</p>
-            <p className="text-xs text-gray-900">{activity.timestamp}</p>
+            <p className="text-xs text-gray-900">
+              {activity.timestamp.toLocaleTimeString()}
+            </p>
           </li>
         ))}
       </ul>
