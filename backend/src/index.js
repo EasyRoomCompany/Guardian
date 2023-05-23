@@ -8,6 +8,11 @@ const pool = new Pool({
   connectionString: process.env.POSTGRESS_URL,
 });
 
+const dbUsers = require("./routes/users")
+const dbRoom = require("./routes/room")
+const dbCompany = require("./routes/company")
+const dbReservation = require("./routes/reservation")
+
 const app = express();
 app.use(cors());
 
@@ -34,52 +39,40 @@ function errorHandler (err, req, res, next) {
 }
 
 /**
- * Rota para listar usuários
+ * Users
  */
-app.get("/users", async (req, res) => {
-  try {
-    const rows = await pool.query("SELECT * FROM users");
-    return res.status(200).send(rows);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
+app.get('/users', dbUsers.getUsers);
+app.get('/users/:id', dbUsers.getUsers);
+app.post('/users', dbUsers.createUser);
+app.put('/users/:id', dbUsers.updateUser);
+app.delete('/users/:id', dbUsers.deleteUser);
+/**
+ * Room
+ */
+app.get('/room',dbRoom.getRoom);
+app.get('/room/:id',dbRoom.getRoomById);
+app.post('/room',dbRoom.createRoom);
+app.put('/room/:id',dbRoom.updateRoom);
+app.delete('/room/:id',dbRoom.deleteRoom);
 
 /**
- * Rota para listar empresas
+ * Company
  */
-app.get("/company", async (req, res) => {
-  try {
-    const rows = await pool.query("SELECT * FROM company");
-    return res.status(200).send(rows);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
+app.get('/company',dbCompany.getCompany);
+app.get('/company/:id',dbCompany.getCompanyById);
+app.post('/company',dbCompany.createCompany);
+app.put('/company/:id',dbCompany.updateCompany);
+app.delete('/company/:id',dbCompany.deleteCompany);
 
 /**
- * Rota para listar as salas
+ * Reservation
  */
-app.get("/room", async (req, res) => {
-  try {
-    const rows = await pool.query("SELECT * FROM room");
-    return res.status(200).send(rows);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
+app.get('/reservation',dbReservation.getReservation);
+app.get('/reservation/:id',dbReservation.getReservationById);
+app.post('/reservation',dbReservation.createReservation);
+app.put('/reservation/:id',dbReservation.updateReservation);
+app.delete('/reservation/:id',dbReservation.deleteReservation);
 
-/**
- * Rota para listar resevation
- */
-app.get("/reservation", async (req, res) => {
-  try {
-    const rows = await pool.query("SELECT * FROM reservation");
-    return res.status(200).send(rows);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
 
 /**
  * Rota para login
@@ -104,72 +97,6 @@ app.post("/login", async (req, res) => {
   }
 });
 
-/**
- * Rota post newcompany
- */
-app.post("/newcompany", async(req, res) => {
-  const { razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone } = req.body;
-
-  try {
-    const newcompany = await pool.query(`INSERT INTO company(razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, [razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone]);
-    return res.status(200).send(newcompany)
-  } catch (error) {
-    return res.status(400).send(error)
-  }
-})
-
-/**
- * Rota post newroom
- */
-app.post("/newroom", async(req, res) => {
-  const { capacity, description, name, priceHour } = req.body;
-
-  try {
-    const newroom = await pool.query(`INSERT INTO room(capacity, description, name, priceHour) VALUES ($1, $2, $3, $4)`, [capacity, description, name, priceHour]);
-    return res.status(200).send(newroom)
-  } catch (error) {
-    return res.status(400).send(error)
-  }
-})
-
-/**
- * Rtoa post reservation
- */
-app.post("/reservation", async(req, res) => {
-  const { eventcategory, data, initialhour, finishhour, room_id, id_user, accesskey, status } = req.body
-
-  try {
-    const newreservation = await pool.query(`INSERT INTO reservation( eventcategory, data, initialhour, finishhour, room_id, id_user, accesskey, status ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, [eventcategory, data, initialhour, finishhour, room_id, id_user, accesskey, status]);
-    return res.status(200).send(newreservation)
-  } catch (error) {
-    return res.status(400).send(error)
-  }
-})
-
-/**
- * Rota put users
- */
-app.put("/users/:id", async (req, res) => {
-  const userId = req.params.id;
-  const { user_name, user_email, user_password, user_address } = req.body;
-
-  try {
-    const existingUser = await pool.query("SELECT * FROM users WHERE user_id = $1", [userId]);
-
-    if (existingUser.rows.length === 0) {
-      return res.status(404).send("User not found");
-    }
-
-    const updateUser = await pool.query(
-      `UPDATE users SET user_name = $1, user_email = $2, user_password = $3, user_address = $4 WHERE user_id = $5`,
-      [user_name, user_email, user_password, user_address, userId]
-    );
-
-    return res.status(200).send("User updated successfully");
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
 
 
 app.use(logErrors)

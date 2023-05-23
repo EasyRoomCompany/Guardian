@@ -21,6 +21,10 @@ interface ImageProps {
    * Checks if rounded edges are enabled
    */
   isRoundedBorder?: boolean;
+  /**
+   * Classname tailwind
+   */
+  className?: string;
 }
 
 /**
@@ -31,6 +35,7 @@ export const Image: React.FC<ImageProps> = ({
   alt,
   width = "full",
   height = "full",
+  className,
   isRoundedBorder = false,
   ...props
 }) => {
