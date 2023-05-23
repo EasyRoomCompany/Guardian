@@ -1,7 +1,7 @@
 import { Statistics } from "../components/Statistics";
 import { RecentActivities } from "../components/RecentActivities";
 
-export function Home() {
+export const Home = () => {
   // Fictitious data for RecentActivities component
   const activities = [
     {
@@ -36,4 +36,4 @@ export function Home() {
       </div>
     </div>
   );
-}
+};
