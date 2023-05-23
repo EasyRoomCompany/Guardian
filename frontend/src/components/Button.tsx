@@ -24,7 +24,7 @@ interface ButtonProps {
  */
 export const Button: React.FC<ButtonProps> = ({
   size = "medium",
-  backgroundColor = "blue",
+  backgroundColor = "orange",
   label,
   ...props
 }) => {
@@ -34,15 +34,10 @@ export const Button: React.FC<ButtonProps> = ({
     large: "py-3 px-6 text-lg",
   };
 
-  const buttonStyle = {
-    backgroundColor,
-  };
-
   return (
     <button
       type="button"
-      className={`text-white font-semibold rounded ${sizeClasses[size]}`}
-      style={buttonStyle}
+      className={`text-white font-semibold rounded ${sizeClasses[size]} bg-${backgroundColor}-500 w-48 h-full`}
       {...props}
     >
       {label}

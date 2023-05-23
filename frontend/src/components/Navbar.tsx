@@ -20,7 +20,7 @@ export const Navbar = () => {
       {navigation.map((item) => (
         <button
           key={item.name}
-          className="flex items-center justify-center w-full h-16 text-center md:text-left md:hover:border-orange-500 p-4"
+          className="flex items-center  w-full h-16 text-center md:text-left md:hover:border-orange-500 p-4"
           onClick={() => handleClick(item.route)}
         >
           <span className="md:mr-4">{item.icon}</span>

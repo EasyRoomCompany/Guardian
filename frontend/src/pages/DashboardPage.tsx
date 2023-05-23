@@ -50,7 +50,6 @@ export const DashboardPage = () => {
 
       <div className="dashboard-body flex">
         <Navbar />
-
         <Outlet />
       </div>
     </div>
