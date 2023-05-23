@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Calendar } from '../components/Calendar';
+import Calendar from '../components/Calendar';
 
 /**
  * Calendar component that shows date and time
@@ -19,7 +19,6 @@ type Story = StoryObj<typeof meta>;
  */
 export const Calendar_component: Story = {
   args: {
-    value: '',
-    onChange: () => alert('Clicado')
+    label: 'Data de agendamento',
   },
 };
