@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 
 export const DashboardPage = () => {
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>("dark");
   const navigate = useNavigate();
   // const [section, setSection] = useState("users"); // Default section
 

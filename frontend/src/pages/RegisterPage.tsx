@@ -4,7 +4,7 @@ import { ThemeToggleButton } from "../components/ThemeToggleButton";
 import { useNavigate } from "react-router-dom";
 
 export const RegisterPage: React.FC = () => {
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>("dark");
   const navigate = useNavigate();
 
   const handleRegister = (event: React.FormEvent) => {
