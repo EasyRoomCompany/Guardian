@@ -132,6 +132,46 @@ app.post("/newroom", async(req, res) => {
   }
 })
 
+/**
+ * Rtoa post reservation
+ */
+app.post("/reservation", async(req, res) => {
+  const { eventcategory, data, initialhour, finishhour, room_id, id_user, accesskey, status } = req.body
+
+  try {
+    const newreservation = await pool.query(`INSERT INTO reservation( eventcategory, data, initialhour, finishhour, room_id, id_user, accesskey, status ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, [eventcategory, data, initialhour, finishhour, room_id, id_user, accesskey, status]);
+    return res.status(200).send(newreservation)
+  } catch (error) {
+    return res.status(400).send(error)
+  }
+})
+
+/**
+ * Rota put users
+ */
+app.put("/users/:id", async (req, res) => {
+  const userId = req.params.id;
+  const { user_name, user_email, user_password, user_address } = req.body;
+
+  try {
+    const existingUser = await pool.query("SELECT * FROM users WHERE user_id = $1", [userId]);
+
+    if (existingUser.rows.length === 0) {
+      return res.status(404).send("User not found");
+    }
+
+    const updateUser = await pool.query(
+      `UPDATE users SET user_name = $1, user_email = $2, user_password = $3, user_address = $4 WHERE user_id = $5`,
+      [user_name, user_email, user_password, user_address, userId]
+    );
+
+    return res.status(200).send("User updated successfully");
+  } catch (error) {
+    return res.status(400).send(error);
+  }
+});
+
+
 app.use(logErrors)
 app.use(clientErrorHandler)
 app.use(errorHandler)
