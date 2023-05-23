@@ -1,3 +1,5 @@
+import React from "react";
+
 interface ImageProps {
   /**
    * The source URL of the image
@@ -15,24 +17,26 @@ interface ImageProps {
    * The height of the image (use Tailwind height classes)
    */
   height?: string;
+  /**
+   * Checks if rounded edges are enabled
+   */
+  isRoundedBorder?: boolean;
 }
 
 /**
  * UI component for displaying images
  */
-export const Image = ({
+export const Image: React.FC<ImageProps> = ({
   src,
   alt,
-  width = "w-full",
-  height = "h-full",
+  width = "full",
+  height = "full",
+  isRoundedBorder = false,
   ...props
-}: ImageProps) => {
-  return (
-    <img
-      src={src}
-      alt={alt}
-      className={`${width} ${height} object-cover rounded-full`}
-      {...props}
-    />
-  );
+}) => {
+  const classNames = `${width} ${height} ${
+    isRoundedBorder ? "object-cover rounded" : ""
+  }`;
+
+  return <img src={src} alt={alt} className={classNames} {...props} />;
 };
