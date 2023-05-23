@@ -23,13 +23,27 @@ export const DashboardPage = () => {
   // };
 
   // Fictitious data for RecentActivities component
-  // const activities = [
-  //   { id: 1, description: 'User1 created Room A.' },
-  //   { id: 2, description: 'User2 joined Room B.' },
-  //   { id: 3, description: 'User3 left Room C.' },
-  //   { id: 4, description: 'User4 created Event X in Room A.' },
-  //   Add more activities as needed...
-  // ];
+  const activities = [
+    {
+      user: "John Doe",
+      room: "Conference Room",
+      event: "Scheduled Meeting",
+      date: new Date(2023, 4, 20, 10, 30),
+    },
+    {
+      user: "Jane Smith",
+      room: "Break Room",
+      event: "Coffee Break",
+      date: new Date(2023, 4, 20, 11, 0),
+    },
+    {
+      user: "Bob Johnson",
+      room: "Office",
+      event: "Daily Work",
+      date: new Date(2023, 4, 20, 9, 0),
+    },
+    // ... more activities ...
+  ];
 
   interface ThemeColors {
     [key: string]: string;
@@ -66,7 +80,7 @@ export const DashboardPage = () => {
             <Statistics title="Number of Users" value={61} />
           </div>
           <div className="my-4">
-            <RecentActivities activities={[]} />
+            <RecentActivities activities={activities} />
           </div>
         </div>
       </div>
