@@ -30,7 +30,7 @@ export const RegisterPage: React.FC = () => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ${color}`}
+      className={`relative min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ${color}`}
     >
       <div className="absolute top-4 left-4">
         <h1 className="text-2xl font-semibold">EASYROOM</h1>
