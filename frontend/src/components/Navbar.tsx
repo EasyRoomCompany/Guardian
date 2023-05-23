@@ -1,6 +1,7 @@
-import { FaUser, FaDoorOpen, FaCalendar } from "react-icons/fa";
+import { FaUser, FaDoorOpen, FaCalendar, FaHome } from "react-icons/fa";
 
 const navigation = [
+  { name: "Home", icon: <FaHome size="2em" />, href: "#" },
   { name: "Users", icon: <FaUser size="2em" />, href: "#" },
   { name: "Rooms", icon: <FaDoorOpen size="2em" />, href: "#" },
   { name: "Events", icon: <FaCalendar size="2em" />, href: "#" },
