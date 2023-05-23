@@ -38,7 +38,7 @@ export const DashboardPage = () => {
     },
     {
       user: "Bob Johnson",
-      room: "Office",
+      room: "Office #2",
       event: "Daily Work",
       date: new Date(2023, 4, 20, 9, 0),
     },
@@ -63,7 +63,7 @@ export const DashboardPage = () => {
       <div className="top-bar flex justify-between items-center px-4 py-2">
         <div className="user-info flex items-center space-x-4">
           <h1 className="text-2xl font-semibold">EASYROOM</h1>
-          <span>Welcome, User Name</span>
+          <span>Welcome, User</span>
         </div>
         <div className="controls flex items-center space-x-4">
           <button onClick={handleLogout}>Log Out</button>
