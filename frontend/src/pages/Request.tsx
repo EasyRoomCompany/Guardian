@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
 
 interface RequestProps {
   title: string;
@@ -41,7 +42,7 @@ export const Request = ({
           onClick={onClose}
           className="absolute right-4 top-4 text-black"
         >
-          X
+          <FaTimes size="2em" />
         </button>
         <h2 className="text-2xl font-bold mb-2 text-white">{title}</h2>
         {inputs.map((input) => (
