@@ -1,24 +1,37 @@
 const express = require("express");
+const cors = require('cors');
 const { Pool } = require("pg");
 require("dotenv").config();
 
 const PORT = 3333;
-
 const pool = new Pool({
   connectionString: process.env.POSTGRESS_URL,
 });
 
 const app = express();
+app.use(cors());
 
 // Middleware para fazer o parsing do corpo da solicitação como JSON
 app.use(express.json());
 
-/**
- * Rota de teste
- */
-app.get("/", (req, res) => {
-  console.log("Olá, mundo");
-});
+
+function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
+};
+
+function clientErrorHandler (err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    next(err)
+  }
+}
+
+function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
+}
 
 /**
  * Rota para listar usuários
@@ -97,8 +110,8 @@ app.post("/login", async (req, res) => {
 app.post("/newcompany", async(req, res) => {
   const { razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone } = req.body;
 
-  const newcompany = await pool.query(`INSERT INTO company(razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, [razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone]);
   try {
+    const newcompany = await pool.query(`INSERT INTO company(razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, [razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone]);
     return res.status(200).send(newcompany)
   } catch (error) {
     return res.status(400).send(error)
@@ -111,13 +124,16 @@ app.post("/newcompany", async(req, res) => {
 app.post("/newroom", async(req, res) => {
   const { capacity, description, name, priceHour } = req.body;
 
-  const newroom = await pool.query(`INSERT INTO room(capacity, description, name, priceHour) VALUES ($1, $2, $3, $4)`, [capacity, description, name, priceHour]);
   try {
+    const newroom = await pool.query(`INSERT INTO room(capacity, description, name, priceHour) VALUES ($1, $2, $3, $4)`, [capacity, description, name, priceHour]);
     return res.status(200).send(newroom)
   } catch (error) {
     return res.status(400).send(error)
   }
 })
 
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
