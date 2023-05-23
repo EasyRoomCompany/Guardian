@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FaLightbulb } from "react-icons/fa";
 
 interface ThemeToggleButtonProps {
   /**
@@ -8,7 +8,7 @@ interface ThemeToggleButtonProps {
   /**
    * Function to set the current theme
    */
-  setTheme: React.Dispatch<React.SetStateAction<string>>;
+  setTheme: (value: string) => void;
   /**
    * State of the button
    */
@@ -24,30 +24,24 @@ interface ThemeToggleButtonProps {
  */
 export const ThemeToggleButton = ({
   theme,
-  stateBtn,
-  onClick,
-  setTheme
+  setTheme,
 }: ThemeToggleButtonProps) => {
-  const [clicked, setClicked] = useState(stateBtn);
+  const isDark = theme === "dark";
 
   const handleClick = () => {
-    setClicked(!clicked);
-    if (onClick) {
-      onClick(!clicked);
-    }
-    setThemeClick();
-  };
-
-  const setThemeClick = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme(isDark ? "light" : "dark");
   };
 
   return (
     <button
       onClick={handleClick}
-      className="p-2 bg-orange-500 text-white rounded-lg focus:outline-none"
+      className="focus:outline-none bg-transparent border-none"
+      aria-label="Toggle Theme"
     >
-      {clicked ? "Dark Mode" : "Light Mode"}
+      <FaLightbulb
+        className={`text-orange-500 ${isDark ? "fill-current" : ""}`}
+        size={24}
+      />
     </button>
   );
 };

@@ -1,72 +1,78 @@
 const express = require("express");
+const cors = require('cors');
 const { Pool } = require("pg");
 require("dotenv").config();
 
 const PORT = 3333;
-
 const pool = new Pool({
   connectionString: process.env.POSTGRESS_URL,
 });
 
+const dbUsers = require("./routes/users")
+const dbRoom = require("./routes/room")
+const dbCompany = require("./routes/company")
+const dbReservation = require("./routes/reservation")
+
 const app = express();
+app.use(cors());
 
 // Middleware para fazer o parsing do corpo da solicitação como JSON
 app.use(express.json());
 
-/**
- * Rota de teste
- */
-app.get("/", (req, res) => {
-  console.log("Olá, mundo");
-});
+
+function logErrors (err, req, res, next) {
+  console.error(err.stack)
+  next(err)
+};
+
+function clientErrorHandler (err, req, res, next) {
+  if (req.xhr) {
+    res.status(500).send({ error: 'Something failed!' })
+  } else {
+    next(err)
+  }
+}
+
+function errorHandler (err, req, res, next) {
+  res.status(500)
+  res.render('error', { error: err })
+}
 
 /**
- * Rota para listar usuários
+ * Users
  */
-app.get("/users", async (req, res) => {
-  try {
-    const rows = await pool.query("SELECT * FROM users");
-    return res.status(200).send(rows);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
+app.get('/users', dbUsers.getUsers);
+app.get('/users/:id', dbUsers.getUsers);
+app.post('/users', dbUsers.createUser);
+app.put('/users/:id', dbUsers.updateUser);
+app.delete('/users/:id', dbUsers.deleteUser);
+/**
+ * Room
+ */
+app.get('/room',dbRoom.getRoom);
+app.get('/room/:id',dbRoom.getRoomById);
+app.post('/room',dbRoom.createRoom);
+app.put('/room/:id',dbRoom.updateRoom);
+app.delete('/room/:id',dbRoom.deleteRoom);
 
 /**
- * Rota para listar empresas
+ * Company
  */
-app.get("/company", async (req, res) => {
-  try {
-    const rows = await pool.query("SELECT * FROM company");
-    return res.status(200).send(rows);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
+app.get('/company',dbCompany.getCompany);
+app.get('/company/:id',dbCompany.getCompanyById);
+app.post('/company',dbCompany.createCompany);
+app.put('/company/:id',dbCompany.updateCompany);
+app.delete('/company/:id',dbCompany.deleteCompany);
 
 /**
- * Rota para listar as salas
+ * Reservation
  */
-app.get("/room", async (req, res) => {
-  try {
-    const rows = await pool.query("SELECT * FROM room");
-    return res.status(200).send(rows);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
+app.get('/reservation',dbReservation.getReservation);
+app.get('/reservation/:id',dbReservation.getReservationById);
+app.post('/reservation',dbReservation.createReservation);
+app.put('/reservation/:id',dbReservation.updateReservation);
+app.delete('/reservation/:id',dbReservation.deleteReservation);
 
-/**
- * Rota para listar resevation
- */
-app.get("/reservation", async (req, res) => {
-  try {
-    const rows = await pool.query("SELECT * FROM reservation");
-    return res.status(200).send(rows);
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
 
 /**
  * Rota para login
@@ -91,33 +97,10 @@ app.post("/login", async (req, res) => {
   }
 });
 
-/**
- * Rota post newcompany
- */
-app.post("/newcompany", async(req, res) => {
-  const { razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone } = req.body;
 
-  const newcompany = await pool.query(`INSERT INTO company(razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`, [razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone]);
-  try {
-    return res.status(200).send(newcompany)
-  } catch (error) {
-    return res.status(400).send(error)
-  }
-})
 
-/**
- * Rota post newroom
- */
-app.post("/newroom", async(req, res) => {
-  const { capacity, description, name, priceHour } = req.body;
-
-  const newroom = await pool.query(`INSERT INTO room(capacity, description, name, priceHour) VALUES ($1, $2, $3, $4)`, [capacity, description, name, priceHour]);
-  try {
-    return res.status(200).send(newroom)
-  } catch (error) {
-    return res.status(400).send(error)
-  }
-})
-
+app.use(logErrors)
+app.use(clientErrorHandler)
+app.use(errorHandler)
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

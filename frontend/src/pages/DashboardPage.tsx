@@ -4,13 +4,11 @@ import { ThemeToggleButton } from "../components/ThemeToggleButton";
 // import RoomsSection from './RoomsSection';
 // import UsersSection from './UsersSection';
 // import EventsSection from './EventsSection';
-import { Statistics } from "../components/Statistics";
-import { RecentActivities } from "../components/RecentActivities";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 
 export const DashboardPage = () => {
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>("dark");
   const navigate = useNavigate();
   // const [section, setSection] = useState("users"); // Default section
 
@@ -21,15 +19,6 @@ export const DashboardPage = () => {
   // const handleSectionChange = (newSection) => {
   //   setSection(newSection);
   // };
-
-  // Fictitious data for RecentActivities component
-  // const activities = [
-  //   { id: 1, description: 'User1 created Room A.' },
-  //   { id: 2, description: 'User2 joined Room B.' },
-  //   { id: 3, description: 'User3 left Room C.' },
-  //   { id: 4, description: 'User4 created Event X in Room A.' },
-  //   Add more activities as needed...
-  // ];
 
   interface ThemeColors {
     [key: string]: string;
@@ -45,13 +34,15 @@ export const DashboardPage = () => {
   const color = themeColors[theme];
 
   return (
-    <div className={`dashboard ${color}`}>
-      <div className="top-bar flex justify-between items-center px-4 py-2">
-        <div className="user-info flex items-center space-x-4">
+    <div
+      className={`relative min-h-screen py-12 px-4 sm:px-6 lg:px-8 ${color}`}
+    >
+      <div className="mb-12">
+        <div className="absolute top-4 left-4 flex items-center space-x-4">
           <h1 className="text-2xl font-semibold">EASYROOM</h1>
-          <span>Welcome, User Name</span>
+          <span>Welcome, User</span>
         </div>
-        <div className="controls flex items-center space-x-4">
+        <div className="absolute top-4 right-4 flex items-center space-x-4">
           <button onClick={handleLogout}>Log Out</button>
           <ThemeToggleButton theme={theme} setTheme={setTheme} />
         </div>
@@ -59,16 +50,7 @@ export const DashboardPage = () => {
 
       <div className="dashboard-body flex">
         <Navbar />
-        <div className="dashboard-content flex-grow p-4">
-          <div className="statistics flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-4 my-4">
-            <Statistics title="Current Rooms in Use" value={42} />
-            <Statistics title="Events Occurred" value={122} />
-            <Statistics title="Number of Users" value={61} />
-          </div>
-          <div className="my-4">
-            <RecentActivities activities={[]} />
-          </div>
-        </div>
+        <Outlet />
       </div>
     </div>
   );

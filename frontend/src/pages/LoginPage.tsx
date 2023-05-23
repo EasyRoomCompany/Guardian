@@ -4,7 +4,7 @@ import { ThemeToggleButton } from "../components/ThemeToggleButton";
 import { useNavigate } from "react-router-dom";
 
 export const LoginPage: React.FC = () => {
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>("dark");
   const navigate = useNavigate();
 
   const handleSignIn = (event: React.FormEvent) => {
@@ -12,7 +12,7 @@ export const LoginPage: React.FC = () => {
     // Here, you would usually authenticate the user
 
     // If the authentication is successful, navigate to the Dashboard page
-    navigate("/dashboard");
+    navigate("/dashboard/home");
   };
 
   const handleSignUp = () => {
@@ -37,9 +37,13 @@ export const LoginPage: React.FC = () => {
     <div
       className={`relative min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ${color}`}
     >
+      <div className="absolute top-4 left-4">
+        <h1 className="text-2xl font-semibold">EASYROOM</h1>
+      </div>
       <div className="absolute top-4 right-4">
         <ThemeToggleButton theme={theme} setTheme={setTheme} />
       </div>
+
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold">
@@ -59,7 +63,7 @@ export const LoginPage: React.FC = () => {
                 id="email"
                 type="email"
                 placeholder="Email address"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded relative block w-full px-3 py-2 mb-4 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
               />
             </div>
             <div>
@@ -67,7 +71,7 @@ export const LoginPage: React.FC = () => {
                 id="password"
                 type="password"
                 placeholder="Password"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm"
               />
             </div>
           </div>
