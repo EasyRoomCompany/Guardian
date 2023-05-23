@@ -59,16 +59,16 @@ export const DashboardPage = () => {
   const color = themeColors[theme];
 
   return (
-    <div className={`dashboard ${color}`}>
-      <div className="top-bar flex justify-between items-center px-4 py-2">
-        <div className="user-info flex items-center space-x-4">
-          <h1 className="text-2xl font-semibold">EASYROOM</h1>
-          <span>Welcome, User</span>
-        </div>
-        <div className="controls flex items-center space-x-4">
-          <button onClick={handleLogout}>Log Out</button>
-          <ThemeToggleButton theme={theme} setTheme={setTheme} />
-        </div>
+    <div
+      className={`relative min-h-screen py-12 px-4 sm:px-6 lg:px-8 ${color} mb-4`}
+    >
+      <div className="absolute top-4 left-4 flex items-center space-x-4">
+        <h1 className="text-2xl font-semibold">EASYROOM</h1>
+        <span>Welcome, User</span>
+      </div>
+      <div className="absolute top-4 right-4 flex items-center space-x-4">
+        <button onClick={handleLogout}>Log Out</button>
+        <ThemeToggleButton theme={theme} setTheme={setTheme} />
       </div>
 
       <div className="dashboard-body flex">
