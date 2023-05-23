@@ -12,7 +12,7 @@ export const LoginPage: React.FC = () => {
     // Here, you would usually authenticate the user
 
     // If the authentication is successful, navigate to the Dashboard page
-    navigate("/dashboard");
+    navigate("/dashboard/home");
   };
 
   const handleSignUp = () => {

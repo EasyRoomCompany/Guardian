@@ -12,7 +12,7 @@ export const RegisterPage: React.FC = () => {
     // Here, you would usually register the user
 
     // If the registration is successful, navigate to the Dashboard page
-    navigate("/dashboard");
+    navigate("/dashboard/home");
   };
 
   interface ThemeColors {
