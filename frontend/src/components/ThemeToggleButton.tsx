@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { FaLightbulb } from "react-icons/fa";
 
 interface ThemeToggleButtonProps {
@@ -25,8 +24,6 @@ interface ThemeToggleButtonProps {
  */
 export const ThemeToggleButton = ({
   theme,
-  stateBtn,
-  onClick,
   setTheme,
 }: ThemeToggleButtonProps) => {
   const isDark = theme === "dark";
