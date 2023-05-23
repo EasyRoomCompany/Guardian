@@ -9,6 +9,7 @@ const meta = {
   title: 'Components/Calendar',
   component: Calendar,
   tags: ['autodocs'],
+  
 } satisfies Meta<typeof Calendar>;
 
 export default meta;
@@ -19,6 +20,6 @@ type Story = StoryObj<typeof meta>;
  */
 export const Calendar_component: Story = {
   args: {
-    label: 'Data de agendamento',
+    label: 'Appointment Date',
   },
 };
