@@ -4,7 +4,7 @@ const pool = new Pool({
 });
 
 const getRoom = (request, response) => {
-  pool.query("SELECT * FROM room ORDER BY id ASC", (error, results) => {
+  pool.query("SELECT * FROM rooms ORDER BY id ASC", (error, results) => {
     if (error) {
       throw error;
     }
@@ -15,7 +15,7 @@ const getRoom = (request, response) => {
 const getRoomById = (request, response) => {
   const id = parseInt(request.params.id);
 
-  pool.query("SELECT * FROM room WHERE id = $1", [id], (error, results) => {
+  pool.query("SELECT * FROM rooms WHERE id = $1", [id], (error, results) => {
     if (error) {
       throw error;
     }
@@ -24,11 +24,11 @@ const getRoomById = (request, response) => {
 };
 
 const createRoom = (request, response) => {
-  const { capacity, description, name, priceHour } = request.body;
+  const { capacity, description, name, price_hour } = request.body;
 
   pool.query(
-    "INSERT INTO room (capacity, description, name, priceHour) VALUES ($1, $2, $3, $4) RETURNING *",
-    [capacity, description, name, priceHour],
+    "INSERT INTO rooms (capacity, description, name, price_hour) VALUES ($1, $2, $3, $4) RETURNING *",
+    [capacity, description, name, price_hour],
     (error, results) => {
       if (error) {
         throw error;
@@ -40,11 +40,11 @@ const createRoom = (request, response) => {
 
 const updateRoom = (request, response) => {
   const id = parseInt(request.params.id);
-  const { capacity, description, name, priceHour } = request.body;
+  const { capacity, description, name, price_hour } = request.body;
 
   pool.query(
-    "UPDATE room SET capacity = $1, description = $2, name = $3 , priceHour = $4 WHERE id = $5",
-    [capacity, description, name, priceHour, id],
+    "UPDATE rooms SET capacity = $1, description = $2, name = $3 , price_hour = $4 WHERE id = $5",
+    [capacity, description, name, price_hour, id],
     (error, results) => {
       if (error) {
         throw error;
@@ -57,7 +57,7 @@ const updateRoom = (request, response) => {
 const deleteRoom = (request, response) => {
   const id = parseInt(request.params.id);
 
-  pool.query('DELETE FROM room WHERE id = $1', [id], (error, results) => {
+  pool.query('DELETE FROM rooms WHERE id = $1', [id], (error, results) => {
     if (error) {
       throw error;
     }

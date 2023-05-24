@@ -9,9 +9,9 @@ const pool = new Pool({
 });
 
 const dbUsers = require("./routes/users")
-const dbRoom = require("./routes/room")
-const dbCompany = require("./routes/company")
-const dbReservation = require("./routes/reservation")
+const dbRooms = require("./routes/rooms")
+const dbCompanies = require("./routes/companies")
+const dbReservations = require("./routes/reservations")
 
 const app = express();
 app.use(cors());
@@ -49,29 +49,29 @@ app.delete('/users/:id', dbUsers.deleteUser);
 /**
  * Room
  */
-app.get('/room',dbRoom.getRoom);
-app.get('/room/:id',dbRoom.getRoomById);
-app.post('/room',dbRoom.createRoom);
-app.put('/room/:id',dbRoom.updateRoom);
-app.delete('/room/:id',dbRoom.deleteRoom);
+app.get('/rooms',dbRooms.getRoom);
+app.get('/rooms/:id',dbRooms.getRoomById);
+app.post('/rooms',dbRooms.createRoom);
+app.put('/rooms/:id',dbRooms.updateRoom);
+app.delete('/rooms/:id',dbRooms.deleteRoom);
 
 /**
  * Company
  */
-app.get('/company',dbCompany.getCompany);
-app.get('/company/:id',dbCompany.getCompanyById);
-app.post('/company',dbCompany.createCompany);
-app.put('/company/:id',dbCompany.updateCompany);
-app.delete('/company/:id',dbCompany.deleteCompany);
+app.get('/companies',dbCompanies.getCompany);
+app.get('/companies/:id',dbCompanies.getCompanyById);
+app.post('/companies',dbCompanies.createCompany);
+app.put('/companies/:id',dbCompanies.updateCompany);
+app.delete('/companies/:id',dbCompanies.deleteCompany);
 
 /**
  * Reservation
  */
-app.get('/reservation',dbReservation.getReservation);
-app.get('/reservation/:id',dbReservation.getReservationById);
-app.post('/reservation',dbReservation.createReservation);
-app.put('/reservation/:id',dbReservation.updateReservation);
-app.delete('/reservation/:id',dbReservation.deleteReservation);
+app.get('/reservations',dbReservations.getReservation);
+app.get('/reservations/:id',dbReservations.getReservationById);
+app.post('/reservations',dbReservations.createReservation);
+app.put('/reservations/:id',dbReservations.updateReservation);
+app.delete('/reservations/:id',dbReservations.deleteReservation);
 
 
 /**
