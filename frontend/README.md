@@ -19,7 +19,7 @@ Instructions on how to set up your development environment.
 - [Prerequisites](#Prerequisites)
 - [Installation](#installation)
 - [NPM Packages](#install-npm-packages)
-- [Storybook](#install-the-storybook)
+- [Storybook](#install-storybook)
 - [Usage](#usage)
 
 </details>
