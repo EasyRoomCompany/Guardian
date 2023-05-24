@@ -1,5 +1,3 @@
-const { request, response } = require("express");
-
 const Pool = require("pg").Pool;
 const pool = new Pool({
   connectionString: process.env.POSTGRESS_URL,

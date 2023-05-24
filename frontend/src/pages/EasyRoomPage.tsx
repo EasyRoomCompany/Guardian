@@ -18,7 +18,7 @@ export const EasyRoomPage: React.FC = () => {
   const [selectedRoomId, setSelectedRoomId] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:9000/room')
+    fetch('http://localhost:3333/rooms')
       .then(resp => resp.json())
       .then(data => {
         setData(data);
