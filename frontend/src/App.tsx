@@ -6,6 +6,7 @@ import { Rooms } from "./pages/Rooms.tsx";
 import { Events } from "./pages/Events.tsx";
 import { DashboardPage } from "./pages/DashboardPage.tsx";
 import { RegisterPage } from "./pages/RegisterPage.tsx";
+import { EasyRoomPage } from "./pages/EasyRoomPage.tsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/user" element={<EasyRoomPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<DashboardPage />}>
           <Route path="home" element={<Home />} />

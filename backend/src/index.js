@@ -3,7 +3,7 @@ const cors = require('cors');
 const { Pool } = require("pg");
 require("dotenv").config();
 
-const PORT = 3333;
+const PORT = 9000;
 const pool = new Pool({
   connectionString: process.env.POSTGRESS_URL,
 });
