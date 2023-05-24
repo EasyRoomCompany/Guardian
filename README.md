@@ -56,3 +56,7 @@ EasyRoom is a system developed to facilitate the management of the use of rooms 
 ## [Frontend](frontend/README.md)
 
 ## [Backend](backend/README.md)
+
+# Additional Documentation
+
+For more detailed information on using and configuring EasyRoom, please refer to the complete documentation available in the "docs.pdf" file or visit our website at [www.easyroom.com/docs](www.easyroom.com/docs).
