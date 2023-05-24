@@ -20,6 +20,11 @@ export const LoginPage: React.FC = () => {
     navigate("/register");
   };
 
+  const goToForgotPassword = (event: React.MouseEvent) => {
+    event.preventDefault();
+    navigate("/forgotpassword");
+  };
+
   interface ThemeColors {
     [key: string]: string;
     light: string;
@@ -94,7 +99,8 @@ export const LoginPage: React.FC = () => {
 
             <div className="text-sm">
               <a
-                href="#"
+                href="/forgotpassword"
+                onClick={goToForgotPassword}
                 className="font-medium text-orange-500 hover:text-orange-400"
               >
                 Forgot your password?
