@@ -30,3 +30,27 @@ Para instalar as ferramentas no seu ambiente de desenvolvimento local, será nec
 
 ```npm install npm@latest -g```
 
+## Instalação
+
+Clone o repositório na sua maquina:
+
+```git clone https://github.com/HackathonTeam05/Guardian.git```
+
+### Instale os pacotes do NPM:
+
+```npm install```
+
+### Instale o Storybook
+
+Use o Storybook CLI para instalá-lo em um único comando. Execute isso dentro do diretório raiz do seu projeto existente:
+
+```npx storybook@latest init```
+
+> O Storybook examinará as dependências do seu projeto durante o processo de instalação e fornecerá a melhor configuração disponível.
+
+Verifique se tudo funcionou executando:
+
+```npm run storybook```
+
+> Ele iniciará o Storybook localmente e exibirá o endereço. Dependendo da configuração do seu sistema, ele abrirá automaticamente o endereço em uma nova guia do navegador e você será saudado por uma tela de boas-vindas.
+
