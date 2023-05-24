@@ -60,3 +60,8 @@ EasyRoom is a system developed to facilitate the management of the use of rooms 
 # Additional Documentation
 
 For more detailed information on using and configuring EasyRoom, please refer to the complete documentation available in the "docs.pdf" file or visit our website at [www.easyroom.com/docs](www.easyroom.com/docs).
+
+# Support
+
+If you have any questions, problems or suggestions regarding EasyRoom, please contact our support team at support@easyroom.com. We are available to help you and constantly improve our system.
+Thank you for choosing EasyRoom as your room management system. We hope it makes your everyday life simpler and more efficient.
