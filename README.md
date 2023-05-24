@@ -83,3 +83,7 @@ This project exists thanks to the contribution of these people:
 | <a href="https://github.com/ivannaprata">Ivanna Prata</a> | Data Analytics |  <a href="https://github.com/ivannaprata"><img src="img/6.png" width="70" ></a> |
 | <a href="https://github.com/fabianopmelo">Fabiano Melo</a> | Data Analytics | <a href="https://github.com/fabianopmelo"><img src="img/4.png" width="70" ></a> |
 | <a href="https://github.com/gabrielsousarod">Gabriel Sousa</a>| Marketing| <a href="https://github.com/gabriellsousa"><img src="img/5.png" width="70" ></a> |
+
+## License
+
+This project is MIT licensed, as found in the <a href="https://github.com/HackathonTeam05/Guardian/blob/main/LICENSE">LICENSE.md</a> file.
