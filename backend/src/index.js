@@ -3,7 +3,7 @@ const cors = require('cors');
 const { Pool } = require("pg");
 require("dotenv").config();
 
-const PORT = 3333;
+const PORT = 9000;
 const pool = new Pool({
   connectionString: process.env.POSTGRESS_URL,
 });
@@ -75,27 +75,11 @@ app.delete('/reservation/:id',dbReservation.deleteReservation);
 
 
 /**
- * Rota para login
+ * Validations
  */
-app.post("/login", async (req, res) => {
-  const { user_name, user_email, user_password, user_address } = req.body;
 
-  try {
-    const existingUser = await pool.query("SELECT * FROM users WHERE user_name = $1",[user_name]);
-
-    if (existingUser.rows.length === 0) {
-      const newLogin = await pool.query(
-        `INSERT INTO users(user_name, user_email, user_password, user_address) VALUES ($1, $2, $3, $4)`,
-        [user_name, user_email, user_password, user_address]
-      );
-      return res.status(200).send(newLogin);
-    } else {
-      return res.status(200).send("User already exists");
-    }
-  } catch (error) {
-    return res.status(400).send(error);
-  }
-});
+app.get('/login/:id', dbUsers.validateLogin);
+app.post('/users/validate-email', dbUsers.validateEmailUser);
 
 
 
