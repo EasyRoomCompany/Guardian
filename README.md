@@ -65,3 +65,21 @@ For more detailed information on using and configuring EasyRoom, please refer to
 
 If you have any questions, problems or suggestions regarding EasyRoom, please contact our support team at support@easyroom.com. We are available to help you and constantly improve our system.
 Thank you for choosing EasyRoom as your room management system. We hope it makes your everyday life simpler and more efficient.
+
+# Version
+
+
+# Contributors
+
+This project exists thanks to the contribution of these people:
+
+| Name | Function | Avatar |
+| --- | --- | --- |
+| <a href="https://github.com/kevinDsousa">Kevin Sousa</a> | Developer |  <a href="https://github.com/kevinDsousa"><img src="img/8.png" width="70" ></a> |
+| <a href="https://github.com/joellacerda">Joel Lacerda</a> | Developer | <a href="https://github.com/joellacerda"><img src="img/7.png" width="70" ></a> |
+| <a href="https://github.com/christiansousadev">Christian Sousa</a> | Developer | <a href="https://github.com/christiansousadev"><img src="img/1.png" width="70" ></a> |
+| <a href="https://github.com/enzogomezz">Enzo Gomez</a> | Developer | <a href="https://github.com/enzogomezz"><img src="img/3.png" width="70" ></a> |
+| <a href="https://github.com/mikaelmonteirodev">Mikael Monteiro</a> |Developer | <a href="https://github.com/mikaelmonteirodev"><img src="img/2.png" width="70" ></a> |
+| <a href="https://github.com/ivannaprata">Ivanna Prata</a> | Data Analytics |  <a href="https://github.com/ivannaprata"><img src="img/6.png" width="70" ></a> |
+| <a href="https://github.com/fabianopmelo">Fabiano Melo</a> | Data Analytics | <a href="https://github.com/fabianopmelo"><img src="img/4.png" width="70" ></a> |
+| <a href="https://github.com/gabrielsousarod">Gabriel Sousa</a>| Marketing| <a href="https://github.com/gabriellsousa"><img src="img/5.png" width="70" ></a> |
