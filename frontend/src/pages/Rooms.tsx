@@ -1,14 +1,46 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
-import { Request } from "./Request";
+import { Request } from "../components/Request";
+import {
+  FaCheck,
+  FaDoorOpen,
+  FaEdit,
+  FaMinus,
+  FaPlus,
+  FaTag,
+} from "react-icons/fa";
 
 const buttons = [
-  { label: "Room Info", route: "roominfo" },
-  { label: "Create Room", route: "createroom" },
-  { label: "Update Room", route: "updateroom" },
-  { label: "Delete Room", route: "deleteroom" },
-  { label: "List Rooms", route: "listrooms" },
-  { label: "Search Room", route: "searchroom" },
+  {
+    label: "Room Info",
+    icons: [<FaDoorOpen size="2em" />, <FaTag />],
+    route: "roominfo",
+  },
+  {
+    label: "Create Room",
+    icons: [<FaDoorOpen size="2em" />, <FaPlus />],
+    route: "createroom",
+  },
+  {
+    label: "Update Room",
+    icons: [<FaDoorOpen size="2em" />, <FaEdit />],
+    route: "updateroom",
+  },
+  {
+    label: "Delete Room",
+    icons: [<FaDoorOpen size="2em" />, <FaMinus />],
+    route: "deleteroom",
+  },
+  {
+    label: "List Rooms",
+    icons: [<FaDoorOpen size="2em" />],
+    route: "listrooms",
+  },
+  {
+    label: "Search Room",
+    icons: [<FaDoorOpen size="2em" />, <FaCheck />],
+    route: "searchroom",
+  },
 ];
 
 type Route =
@@ -70,6 +102,7 @@ export const Rooms = () => {
       {buttons.map((button) => (
         <div key={button.label}>
           <Button
+            icons={button.icons}
             label={button.label}
             size="large"
             onClick={() => handleClick(button.route as Route, button.label)}

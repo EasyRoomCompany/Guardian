@@ -1,14 +1,46 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
-import { Request } from "./Request";
+import { Request } from "../components/Request";
+import {
+  FaCalendar,
+  FaCheck,
+  FaEdit,
+  FaMinus,
+  FaPlus,
+  FaTag,
+} from "react-icons/fa";
 
 const buttons = [
-  { label: "Event Info", route: "eventinfo" },
-  { label: "Create Event", route: "createevent" },
-  { label: "Update Event", route: "updateevent" },
-  { label: "Delete Event", route: "deleteevent" },
-  { label: "List Events", route: "listevents" },
-  { label: "Search Event", route: "searchevent" },
+  {
+    label: "Event Info",
+    icons: [<FaCalendar size="2em" />, <FaTag />],
+    route: "eventinfo",
+  },
+  {
+    label: "Create Event",
+    icons: [<FaCalendar size="2em" />, <FaPlus />],
+    route: "createevent",
+  },
+  {
+    label: "Update Event",
+    icons: [<FaCalendar size="2em" />, <FaEdit />],
+    route: "updateevent",
+  },
+  {
+    label: "Delete Event",
+    icons: [<FaCalendar size="2em" />, <FaMinus />],
+    route: "deleteevent",
+  },
+  {
+    label: "List Events",
+    icons: [<FaCalendar size="2em" />],
+    route: "listevents",
+  },
+  {
+    label: "Search Event",
+    icons: [<FaCalendar size="2em" />, <FaCheck />],
+    route: "searchevent",
+  },
 ];
 
 type Route =
@@ -70,6 +102,7 @@ export const Events = () => {
       {buttons.map((button) => (
         <div key={button.label}>
           <Button
+            icons={button.icons}
             label={button.label}
             size="large"
             onClick={() => handleClick(button.route as Route, button.label)}
