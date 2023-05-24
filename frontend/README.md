@@ -8,7 +8,20 @@ Como informado no README principal do projeto, aqui você vai encontrar toda a o
 
 # Começando
 
+<details>
+<summary>
 Instruções de como configurar seu ambiente de desenvolvimento.
+</summary>
+
+###
+
+- [Ferramentas](#ferramentas)
+- [Pré-Requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+- [Pacote do NPM](#instale-os-pacotes-do-npm)
+- [Storybook](#instale-o-storybook)
+- [Uso](#uso)
+</details>
 
 ## Ferramentas
 
@@ -54,7 +67,7 @@ Verifique se tudo funcionou executando:
 
 > Este comando vai rodar o Storybook localmente e exibirá o endereço. Dependendo da configuração do seu sistema, ele abrirá automaticamente o endereço em uma nova guia do navegador e você será saudado por uma tela de boas-vindas.
 
-# Usage
+# Uso
 
 Para rodar o projeto localmente digite o comando:
 
@@ -64,3 +77,20 @@ A tela inicial abrirá (conforme a imagem abaixo) e você vai poder utilizar o s
 
 <p align="center" ><img src=".././img/test.png" width="500px" /></p>
 
+
+
+
+
+
+
+
+
+
+
+- Instalação
+- Executando os testes
+    - Analise os testes de ponta a ponta
+    - E testes de estilo de codificação
+- Implantação
+- Colaborando
+- Versão
