@@ -94,13 +94,13 @@ To see the features of the application [click here](/README.md).
 
 <p align="right">(<a href="#getting-started">top</a>)</p>
 
-# version
+# Version
 
 The version of this application is ```version 1.0.0```
 
 <p align="right">(<a href="#getting-started">top</a>)</p>
 
-# backend
+# Backend
 
 To see the settings and other information of the [Backend, click here](/backend/README.md).
 
