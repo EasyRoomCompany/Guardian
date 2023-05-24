@@ -1,3 +1,5 @@
+const { request, response } = require("express");
+
 const Pool = require("pg").Pool;
 const pool = new Pool({
   connectionString: process.env.POSTGRESS_URL,
@@ -65,10 +67,49 @@ const deleteUser = (request, response) => {
   });
 };
 
+const validateLogin = (request, response) => {
+  const { user_name, user_email, user_password, user_address } = req.body;
+
+  try {
+    const existingUser = pool.query("SELECT * FROM users WHERE user_name = $1",[user_name]);
+    
+    if (existingUser.rows.length === 0) {
+      const newLogin = pool.query(
+        `INSERT INTO users(user_name, user_email, user_password, user_address) VALUES ($1, $2, $3, $4)`,
+        [user_name, user_email, user_password, user_address]
+      );
+      return res.status(200).send(newLogin);
+    } else {
+      return res.status(200).send("User already exists");
+    }
+
+  } catch (error) {
+    return response.status(400).send(error);
+  }
+}
+
+const validateEmailUser = async (req, res) => {
+  const { user_name, user_email, user_password, user_address } = req.body;
+
+  try {
+    const existEmail = await pool.query('SELECT * FROM users WHERE user_email = $1', [user_email]);
+
+    if (existEmail.rows.length !== 0) {
+      return res.status(200).json({ exists: true });
+    } else {
+      return res.status(200).json({ exists: false });
+    }
+  } catch (error) {
+    return res.status(400).send("Error: " + error);
+  }
+};
+
 module.exports = {
   getUsers,
   getUsersById,
   createUser,
   updateUser,
   deleteUser,
+  validateLogin,
+  validateEmailUser,
 };
