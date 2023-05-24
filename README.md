@@ -87,3 +87,7 @@ This project exists thanks to the contribution of these people:
 ## License
 
 This project is MIT licensed, as found in the <a href="https://github.com/HackathonTeam05/Guardian/blob/main/LICENSE">LICENSE.md</a> file.
+
+## Thanks
+
+Thanks to everyone who helped in any way to make this project possible. You were very important for it to be developed. 👩🥳🙏🎉
