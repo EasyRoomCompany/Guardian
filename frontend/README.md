@@ -15,13 +15,13 @@ Instruções de como configurar seu ambiente de desenvolvimento.
 Este projeto foi criado com:
 
 <p>
-<img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" />
-<img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" />
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
-<img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
-<img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
-<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-<img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white" />
+<a href="https://code.visualstudio.com"><img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" /></a>
+<a href="https://ubuntu.com"><img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" /></a>
+<a href="https://react.dev"><img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /></a>
+<a href="https://vitejs.dev"><img src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" /></a>
+<a href="https://www.typescriptlang.org"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /></a>
+<a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" /></a>
+<a href="https://storybook.js.org"><img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white" /></a>
 </p>
 
 ## Pré-requisitos
@@ -52,5 +52,15 @@ Verifique se tudo funcionou executando:
 
 ```npm run storybook```
 
-> Ele iniciará o Storybook localmente e exibirá o endereço. Dependendo da configuração do seu sistema, ele abrirá automaticamente o endereço em uma nova guia do navegador e você será saudado por uma tela de boas-vindas.
+> Este comando vai rodar o Storybook localmente e exibirá o endereço. Dependendo da configuração do seu sistema, ele abrirá automaticamente o endereço em uma nova guia do navegador e você será saudado por uma tela de boas-vindas.
+
+# Usage
+
+Para rodar o projeto localmente digite o comando:
+
+```npm run dev```
+
+A tela inicial abrirá (conforme a imagem abaixo) e você vai poder utilizar o sistema localmente.
+
+<p align="center" ><img src=".././img/test.png" width="500px" /></p>
 
