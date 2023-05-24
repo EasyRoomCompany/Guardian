@@ -1,16 +1,16 @@
-
-function isNumber(char){
-  return Number.isNumber(char);
+function isNumber(char) {
+  return Number.isInteger(Number(char));
 }
 
-export function isValidCEP(cep){
-  if (cep.length !== 8) {
-    return false;
-  }
+export function isValidCEP(cep) {
+  const digitPattern = /^\d{8}$/;
+  const specialCharacterPattern = /[!@#$%^&*(),.?":{}|<>]/;
 
-  if (!`${cep}`.split().every(isNumber)){
-    return false
-  }
+  return digitPattern.test(cep) && !specialCharacterPattern.test(cep);
+}
 
-  return true || false
+export function isInValidName(name) {
+  const specialCharacterPattern = /[!@#$%^&*(),.?":{}|<>]/;
+
+  return specialCharacterPattern.test(name);
 }
