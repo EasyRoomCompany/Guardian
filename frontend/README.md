@@ -6,6 +6,10 @@
 
 Como informado no README principal do projeto, aqui você vai encontrar toda a orientação necessária para rodar a aplicação.
 
+# Começando
+
+Instruções de como configurar seu ambiente de desenvolvimento.
+
 ## Ferramentas
 
 Este projeto foi criado com:
@@ -20,4 +24,9 @@ Este projeto foi criado com:
 <img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white" />
 </p>
 
+## Pré-requisitos
+
+Para instalar as ferramentas no seu ambiente de desenvolvimento local, será necessário ter o NPM instalado. Para instalar a versão estável mais recente do NPM, na linha de comando, execute:
+
+```npm install npm@latest -g```
 
