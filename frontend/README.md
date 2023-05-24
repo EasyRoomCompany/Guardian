@@ -18,9 +18,10 @@ Instruções de como configurar seu ambiente de desenvolvimento.
 - [Ferramentas](#ferramentas)
 - [Pré-Requisitos](#pré-requisitos)
 - [Instalação](#instalação)
-- [Pacote do NPM](#instale-os-pacotes-do-npm)
+- [Pacotes do NPM](#instale-os-pacotes-do-npm)
 - [Storybook](#instale-o-storybook)
 - [Uso](#uso)
+
 </details>
 
 ## Ferramentas
@@ -49,7 +50,9 @@ Clone o repositório na sua maquina:
 
 ```git clone https://github.com/HackathonTeam05/Guardian.git```
 
-### Instale os pacotes do NPM:
+### Instale os pacotes do NPM
+
+Digite o comando:
 
 ```npm install```
 
@@ -77,20 +80,10 @@ A tela inicial abrirá (conforme a imagem abaixo) e você vai poder utilizar o s
 
 <p align="center" ><img src=".././img/test.png" width="500px" /></p>
 
+# Versão
 
+A versão desta aplicação é a ```version 1.0.0```
 
+# Backend
 
-
-
-
-
-
-
-
-- Instalação
-- Executando os testes
-    - Analise os testes de ponta a ponta
-    - E testes de estilo de codificação
-- Implantação
-- Colaborando
-- Versão
+Para ver as configurações e demais informações do [Backend, clique aqui](/backend/README.md).
