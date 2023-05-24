@@ -78,7 +78,7 @@ Para rodar o projeto localmente digite o comando:
 
 A tela inicial abrirá (conforme a imagem abaixo) e você vai poder utilizar o sistema localmente.
 
-<p align="center" ><img src=".././img/test.png" width="500px" /></p>
+<p><img src=".././img/test.png" width="500px" /></p>
 
 # Versão
 
