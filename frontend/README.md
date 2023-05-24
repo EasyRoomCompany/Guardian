@@ -5,7 +5,7 @@
 # Description
 
 As informed in the main README of the project, here you will find all the necessary guidance to run the application.
-<br />
+<br/>
 
 # Getting Started
 
@@ -24,6 +24,8 @@ Instructions on how to set up your development environment.
 - [Usage](#usage)
 
 </details>
+
+<br/>
 
 ## Tools
 
