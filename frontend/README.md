@@ -2,31 +2,31 @@
 
 ---
 
-# Descrição
+# Description
 
-Como informado no README principal do projeto, aqui você vai encontrar toda a orientação necessária para rodar a aplicação.
+As informed in the main README of the project, here you will find all the necessary guidance to run the application.
 
-# Começando
+# Getting Started
 
 <details>
 <summary>
-Instruções de como configurar seu ambiente de desenvolvimento.
+Instructions on how to set up your development environment.
 </summary>
 
 ###
 
-- [Ferramentas](#ferramentas)
-- [Pré-Requisitos](#pré-requisitos)
-- [Instalação](#instalação)
-- [Pacotes do NPM](#instale-os-pacotes-do-npm)
-- [Storybook](#instale-o-storybook)
-- [Uso](#uso)
+- [Tools](#tools)
+- [Prerequisites](#Prerequisites)
+- [Installation](#installation)
+- [NPM Packages](#install-npm-packages)
+- [Storybook](#install-the-storybook)
+- [Usage](#usage)
 
 </details>
 
-## Ferramentas
+## Tools
 
-Este projeto foi criado com:
+This project was created with:
 
 <p>
 <a href="https://code.visualstudio.com"><img src="https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" /></a>
@@ -38,52 +38,70 @@ Este projeto foi criado com:
 <a href="https://storybook.js.org"><img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white" /></a>
 </p>
 
-## Pré-requisitos
+<p align="right">(<a href="#getting-started">top</a>)</p>
 
-Para instalar as ferramentas no seu ambiente de desenvolvimento local, será necessário ter o NPM instalado. Para instalar a versão estável mais recente do NPM, na linha de comando, execute:
+## Prerequisites
+
+To install the tools in your local development environment, you will need to have NPM installed. To install the latest stable version of NPM, from the command line run:
 
 ```npm install npm@latest -g```
 
-## Instalação
+<p align="right">(<a href="#getting-started">top</a>)</p>
 
-Clone o repositório na sua maquina:
+## Installation
+
+Clone the repository:
 
 ```git clone https://github.com/HackathonTeam05/Guardian.git```
 
-### Instale os pacotes do NPM
+<p align="right">(<a href="#getting-started">top</a>)</p>
 
-Digite o comando:
+### Install NPM packages
+
+Enter the command:
 
 ```npm install```
 
-### Instale o Storybook
+<p align="right">(<a href="#getting-started">top</a>)</p>
 
-Use o Storybook CLI para instalá-lo em um único comando. Execute isso dentro do diretório raiz do seu projeto existente:
+### Install Storybook
+
+Use the Storybook CLI to install it in a single command. Run this inside the root directory of your existing project:
 
 ```npx storybook@latest init```
 
-> O Storybook examinará as dependências do seu projeto durante o processo de instalação e fornecerá a melhor configuração disponível.
+> Storybook will examine your project's dependencies during the installation process and provide you with the best configuration available.
 
-Verifique se tudo funcionou executando:
+Check that everything worked by running:
 
 ```npm run storybook```
 
-> Este comando vai rodar o Storybook localmente e exibirá o endereço. Dependendo da configuração do seu sistema, ele abrirá automaticamente o endereço em uma nova guia do navegador e você será saudado por uma tela de boas-vindas.
+> This command will run Storybook locally and display the address. Depending on your system configuration, it will automatically open the address in a new browser tab and you will be greeted by a welcome screen.
 
-# Uso
+<p align="right">(<a href="#getting-started">top</a>)</p>
 
-Para rodar o projeto localmente digite o comando:
+# Usage
+
+To run the project locally, type the command:
 
 ```npm run dev```
 
-A tela inicial abrirá (conforme a imagem abaixo) e você vai poder utilizar o sistema localmente.
+The initial screen will open (as shown in the image below) and you will be able to use the system locally.
 
 <p><img src=".././img/test.png" width="500px" /></p>
 
-# Versão
+To see the features of the application [click here](/README.md).
 
-A versão desta aplicação é a ```version 1.0.0```
+<p align="right">(<a href="#getting-started">top</a>)</p>
 
-# Backend
+# version
 
-Para ver as configurações e demais informações do [Backend, clique aqui](/backend/README.md).
+The version of this application is ```version 1.0.0```
+
+<p align="right">(<a href="#getting-started">top</a>)</p>
+
+# backend
+
+To see the settings and other information of the [Backend, click here](/backend/README.md).
+
+<p align="right">(<a href="#getting-started">top</a>)</p>
