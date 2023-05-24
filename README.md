@@ -48,3 +48,11 @@ EasyRoom is a system developed to facilitate the management of the use of rooms 
 - Access the system using default administrator credentials.
 - In the admin panel, create rooms, users and configure initial settings.
 - Customize access permissions for each user.
+
+# Technical and Installation Specifications
+
+> Below we have two options of technical specifications to be accessed. Click on the option you want to access:
+
+## [Frontend](frontend/README.md)
+
+## [Backend](backend/README.md)
