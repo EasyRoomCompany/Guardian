@@ -1,15 +1,44 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
-import { Request } from "./Request";
+import { Request } from "../components/Request";
+import {
+  FaUserMinus,
+  FaUserPlus,
+  FaUserTag,
+  FaUserEdit,
+  FaUsers,
+  FaUserCheck,
+  FaUserShield,
+} from "react-icons/fa";
 
 const buttons = [
-  { label: "User Info", route: "userinfo" },
-  { label: "Create User", route: "createuser" },
-  { label: "Update User", route: "updateuser" },
-  { label: "Delete User", route: "deleteuser" },
-  { label: "List Users", route: "listuser" },
-  { label: "Search User", route: "searchuser" },
-  { label: "User Authorization", route: "userauth" },
+  { label: "User Info", icon: [<FaUserTag size="2em" />], route: "userinfo" },
+  {
+    label: "Create User",
+    icon: [<FaUserPlus size="2em" />],
+    route: "createuser",
+  },
+  {
+    label: "Update User",
+    icon: [<FaUserEdit size="2em" />],
+    route: "updateuser",
+  },
+  {
+    label: "Delete User",
+    icon: [<FaUserMinus size="2em" />],
+    route: "deleteuser",
+  },
+  { label: "List Users", icon: [<FaUsers size="2em" />], route: "listuser" },
+  {
+    label: "Search User",
+    icon: [<FaUserCheck size="2em" />],
+    route: "searchuser",
+  },
+  {
+    label: "User Authorization",
+    icon: [<FaUserShield size="2em" />],
+    route: "userauth",
+  },
 ];
 
 type Route =
@@ -74,6 +103,7 @@ export const Users = () => {
       {buttons.map((button) => (
         <div key={button.label}>
           <Button
+            icons={button.icon}
             label={button.label}
             size="large"
             onClick={() => handleClick(button.route as Route, button.label)}
