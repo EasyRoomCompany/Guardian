@@ -1,11 +1,5 @@
 import { ListItem } from "./ListItem";
-
-interface Activity {
-  user: string;
-  room: string;
-  event: string;
-  date: Date;
-}
+import { Activity } from "./ListItem";
 
 interface ListProps {
   activities: Activity[];

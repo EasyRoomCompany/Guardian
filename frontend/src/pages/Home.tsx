@@ -1,38 +1,51 @@
-import { useEffect, useState } from "react";
 import { Statistics } from "../components/Statistics";
 import { RecentActivities } from "../components/RecentActivities";
-import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
-  const [roomsInUse, setRoomsInUse] = useState(0);
-  const [eventsOccurred, setEventsOccurred] = useState(0);
-  const [numberOfUsers, setNumberOfUsers] = useState(0);
-  const [activities, setActivities] = useState([]);
+  // Fictitious data for RecentActivities component
+
+  const [activities, setActivities] = useState([])
+
+  const getActivities = () => {
+    fetch("http://localhost:3333/reservations")
+    .then(resp => resp.json())
+    .then(dados => {
+        setActivities(dados)
+    })
+  }
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    getActivities()
+  }, [])
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/statistics");
-      const { roomsInUse, eventsOccurred, numberOfUsers, recentActivities } =
-        response.data;
-      setRoomsInUse(roomsInUse);
-      setEventsOccurred(eventsOccurred);
-      setNumberOfUsers(numberOfUsers);
-      setActivities(recentActivities);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
+  // const activities = [
+  //   {
+  //     user: "John Doe",
+  //     room: "Conference Room",
+  //     event: "Scheduled Meeting",
+  //     date: new Date(2023, 4, 20, 10, 30),
+  //   },
+  //   {
+  //     user: "Jane Smith",
+  //     room: "Break Room",
+  //     event: "Coffee Break",
+  //     date: new Date(2023, 4, 20, 11, 0),
+  //   },
+  //   {
+  //     user: "Bob Johnson",
+  //     room: "Office #2",
+  //     event: "Daily Work",
+  //     date: new Date(2023, 4, 20, 9, 0),
+  //   },
+  //   // ... more activities ...
+  // ];
   return (
     <div className="dashboard-content flex-grow p-4">
       <div className="statistics flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-4 my-4">
-        <Statistics title="Current Rooms in Use" value={roomsInUse} />
-        <Statistics title="Events Occurred" value={eventsOccurred} />
-        <Statistics title="Number of Users" value={numberOfUsers} />
+        <Statistics title="Current Rooms in Use" value={42} />
+        <Statistics title="Events Occurred" value={122} />
+        <Statistics title="Number of Users" value={61} />
       </div>
       <div className="my-4">
         <RecentActivities activities={activities} />
