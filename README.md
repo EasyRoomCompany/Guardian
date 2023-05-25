@@ -156,6 +156,8 @@ The system allows you to search for events based on criteria such as name, date,
 - In the admin panel, create rooms, users and configure initial settings.
 - Customize access permissions for each user.
 
+<p align="right">(<a href="#main-features">top</a>)</p>
+
 # Technical and Installation Specifications
 
 > Below we have two options of technical specifications to be accessed. Click on the option you want to access:
@@ -164,9 +166,13 @@ The system allows you to search for events based on criteria such as name, date,
 
 ## [Backend](backend/README.md)
 
+<p align="right">(<a href="#main-features">top</a>)</p>
+
 # Additional Documentation
 
 For more detailed information on using and configuring EasyRoom, please refer to the complete documentation available in the "docs.pdf" file or visit our website at [www.easyroom.com.br](www.easyroom.com.br).
+
+<p align="right">(<a href="#main-features">top</a>)</p>
 
 # Support
 
@@ -174,6 +180,7 @@ If you have any questions, problems or suggestions regarding EasyRoom, please co
 
 Thank you for choosing EasyRoom as your room management system. We hope it makes your everyday life simpler and more efficient.
 
+<p align="right">(<a href="#main-features">top</a>)</p>
 
 # Contributors
 
@@ -190,10 +197,16 @@ This project exists thanks to the contribution of these people:
 | <a href="https://github.com/fabianopmelo">Fabiano Melo</a> | Data Analytics | <a href="https://github.com/fabianopmelo"><img src="img/4.png" width="70" ></a> |
 | <a href="https://github.com/gabrielsousarod">Gabriel Sousa</a>| Marketing| <a href="https://github.com/gabriellsousa"><img src="img/5.png" width="70" ></a> |
 
+<p align="right">(<a href="#main-features">top</a>)</p>
+
 # License
 
 This project is MIT licensed, as found in the <a href="https://github.com/HackathonTeam05/Guardian/blob/main/LICENSE">LICENSE.md</a> file.
 
+<p align="right">(<a href="#main-features">top</a>)</p>
+
 # Thanks
 
 Thanks to everyone who helped in any way to make this project possible. You were very important for it to be developed. 👩🥳🙏🎉
+
+<p align="right">(<a href="#main-features">top</a>)</p>
