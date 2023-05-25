@@ -29,34 +29,34 @@ Instructions on how to set up your development environment.
 
 <p align="left" ><img src="/img/users.png" width="300px" /></p>
 
-##### Create User: 
+#### Create User: 
 
 
 
 The system allows you to create new users, providing name, e-mail and mandatory password. It also checks if the email is already in use and requires a secure password.
 
-##### User Details:
+#### User Details:
 
 The system displays an existing user's information including name, email, creation date and other relevant information using a unique ID.
 
-##### Update User:
+#### Update User:
 
 You can update a user's information, such as name, email and password. 
 The system verifies if the new e-mail is already being used and imposes security criteria for the password.
 
-##### Delete User:
+#### Delete User:
 
 The system allows deleting an existing user irreversibly, showing a confirmation step to avoid accidental deletions.
 
-##### List Users:
+#### List Users:
 
 The system presents a clear and organized list of all registered users, showing basic information, such as name and e-mail. From this list, you can drill down, edit, and delete users.
 
-##### Search User:
+#### Search User:
 
 You can search for users based on criteria such as name. The results are displayed in an organized way, similar to the list of users.
 
-##### Authentication and Authorization:
+#### Authentication and Authorization:
 
 The system provides authentication for secure login with username and password. In addition, it has authorization mechanisms to control access to functionalities, allowing specific actions only for authorized users.
 
@@ -68,27 +68,27 @@ The system provides authentication for secure login with username and password. 
 
 <p align="left" ><img src="/img/rooms.png" width="300px" /></p>
 
-##### Create Room:
+#### Create Room:
 
 The system allows the creation of new rooms, with mandatory fields such as name, maximum capacity and available resources.
 
-##### Room Detail:
+#### Room Detail:
 
 The system allows you to view information about an existing room, such as name, maximum capacity and available resources, through its unique identification.
 
-##### Update Room:
+#### Update Room:
 
 The system allows updating the information of an existing room, such as name, maximum capacity and available resources.
 
-##### Delete Room:
+#### Delete Room:
 
 The system allows irreversible deletion of an existing room, with verification of associated events or reservations for reassignment or cancellation.
 
-##### List Rooms: 
+#### List Rooms: 
 
 The system presents a clear and organized list of all registered rooms, showing basic information such as name, maximum capacity and available resources.
 
-##### Room Search:
+#### Room Search:
 
 The system allows you to search rooms based on specific criteria, such as name, maximum capacity or available resources, displaying results in an organized way.
 
@@ -100,27 +100,27 @@ The system allows you to search rooms based on specific criteria, such as name, 
 
 <p align="left" ><img src="/img/events.png" width="300px" /></p>
 
-##### Create Event:
+#### Create Event:
 
 The system allows the creation of events, with information such as name, date, time, room and organizer. Check room availability and capacity for attendees.
 
-##### Detail Event:
+#### Detail Event:
 
 The system displays information about an existing event, such as name, date, time, room and organizer.
 
-##### Update Event:
+#### Update Event:
 
 The system allows updating information about an event, such as name, date, time, room and organizer. Check room availability and capacity for attendees.
 
-##### Delete Event:
+#### Delete Event:
 
 The system allows the deletion of an existing event, freeing up the associated room and offering options to notify participants.
 
-##### List Events: 
+#### List Events: 
 
 The system presents an organized list of all registered events, showing basic information such as name, date, time and room.
 
-##### Event Search:
+#### Event Search:
 
 The system allows you to search for events based on criteria such as name, date, room or organizer. The results are displayed in an organized way, similar to the event listing.
 
@@ -190,10 +190,10 @@ This project exists thanks to the contribution of these people:
 | <a href="https://github.com/fabianopmelo">Fabiano Melo</a> | Data Analytics | <a href="https://github.com/fabianopmelo"><img src="img/4.png" width="70" ></a> |
 | <a href="https://github.com/gabrielsousarod">Gabriel Sousa</a>| Marketing| <a href="https://github.com/gabriellsousa"><img src="img/5.png" width="70" ></a> |
 
-## License
+# License
 
 This project is MIT licensed, as found in the <a href="https://github.com/HackathonTeam05/Guardian/blob/main/LICENSE">LICENSE.md</a> file.
 
-## Thanks
+# Thanks
 
 Thanks to everyone who helped in any way to make this project possible. You were very important for it to be developed. 👩🥳🙏🎉
