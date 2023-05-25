@@ -91,7 +91,7 @@ To run the project locally, type the command:
 
 The initial screen will open (as shown in the image below) and you will be able to use the system locally.
 
-<p><img src=".././img/login.png" width="500px" /></p>
+<p><img src=".././img/login .png" width="500px" /></p>
 
 To see the features of the application [click here](/README.md).
 
