@@ -53,9 +53,8 @@ type Route =
   | "listevents"
   | "searchevent";
 
-type InputsForRoute = {
-  [key in Route]?: { label: string; name: string; type: string }[];
-};
+type InputField = { label: string; name: string; type: string };
+type InputsForRoute = { [key in Route]?: InputField[] };
 
 const inputsForRoute: InputsForRoute = {
   eventinfo: [{ label: "Event ID", name: "id", type: "text" }],
@@ -101,10 +100,26 @@ export const Events = () => {
   };
 
   const handleRequestSubmit = async (data: { [key: string]: string }) => {
+    const id =
+      route !== "createevent" &&
+      route !== "listevents" &&
+      route !== "searchevent"
+        ? parseInt(data.id)
+        : null;
+    if (
+      route !== "createevent" &&
+      route !== "listevents" &&
+      route !== "searchevent" &&
+      Number.isNaN(id)
+    ) {
+      setResponseMessage(`Error: Invalid ID. Please enter a valid number.`);
+      setShowResponse(true);
+      return;
+    }
     switch (route) {
       case "eventinfo":
         axios
-          .get(`http://localhost:3333/reservations/${data.id}`)
+          .get(`http://localhost:3333/reservations/${id}`)
           .then((response) => {
             setResponseMessage("Search results:");
             setResponseData(response.data);
@@ -130,7 +145,7 @@ export const Events = () => {
         break;
       case "updateevent":
         axios
-          .put(`http://localhost:3333/reservations/${data.id}`, data)
+          .put(`http://localhost:3333/reservations/${id}`, data)
           .then((response) => {
             setResponseMessage(response.data.message);
             setShowResponse(true);
@@ -143,7 +158,7 @@ export const Events = () => {
         break;
       case "deleteevent":
         axios
-          .delete(`http://localhost:3333/reservations/${data.id}`)
+          .delete(`http://localhost:3333/reservations/${id}`)
           .then((response) => {
             setResponseMessage(response.data.message);
             setShowResponse(true);

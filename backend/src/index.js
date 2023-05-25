@@ -77,7 +77,7 @@ app.delete("/companies/:id", dbCompanies.deleteCompany);
  */
 app.get("/reservations", dbReservations.getReservation);
 app.post("/reservations", dbReservations.createReservation);
-app.get("/reservations", dbReservations.searchEvent);
+app.get("/reservations", dbReservations.searchReservation);
 app.get("/reservations/:id", dbReservations.getReservationById);
 app.put("/reservations/:id", dbReservations.updateReservation);
 app.delete("/reservations/:id", dbReservations.deleteReservation);
