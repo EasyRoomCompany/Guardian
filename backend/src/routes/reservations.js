@@ -24,11 +24,11 @@ const getReservationById = (request, response) => {
 };
 
 const createReservation = (request, response) => {
-  const { eventcategory, data, initialhour, finishhour, room_id , id_user, accesskey, status} = request.body;
+  const { event_category, date, start_time, end_time, rooms_id , users_id, access_key, status} = request.body;
 
   pool.query(
-    "INSERT INTO reservations (eventcategory, data, initialhour, finishhour, room_id , id_user, accesskey, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-    [eventcategory, data, initialhour, finishhour, room_id , id_user, accesskey, status],
+    "INSERT INTO reservations (event_category, date, start_time, end_time, rooms_id , users_id, access_key, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+    [event_category, date, start_time, end_time, rooms_id , users_id, access_key, status],
     (error, results) => {
       if (error) {
         throw error;
@@ -40,11 +40,11 @@ const createReservation = (request, response) => {
 
 const updateReservation = (request, response) => {
   const id = parseInt(request.params.id);
-  const { eventcategory, data, initialhour, finishhour, room_id , id_user, accesskey, status } = request.body;
+  const { event_category, date, start_time, end_time, rooms_id , users_id, access_key, status } = request.body;
 
   pool.query(
-    "UPDATE reservations SET eventcategory = $1, data = $2, initialhour = $3 , finishhour = $4, room_id = $5, id_user = $6, accesskey = $7, status = $8 WHERE id = $9",
-    [eventcategory, data, initialhour, finishhour, room_id , id_user, accesskey, status, id],
+    "UPDATE reservations SET event_category = $1, date = $2, start_time = $3 , end_time = $4, rooms_id = $5, users_id = $6, access_key = $7, status = $8 WHERE id = $9",
+    [event_category, date, start_time, end_time, rooms_id , users_id, access_key, status, id],
     (error, results) => {
       if (error) {
         throw error;

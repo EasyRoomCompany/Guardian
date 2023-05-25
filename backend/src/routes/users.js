@@ -24,11 +24,11 @@ const getUsersById = (request, response) => {
 };
 
 const createUser = (request, response) => {
-  const { user_name, user_email, user_password, user_address } = request.body;
+  const { username, email, password, address } = request.body;
 
   pool.query(
-    "INSERT INTO users (user_name, user_email, user_password, user_address) VALUES ($1, $2, $3, $4) RETURNING *",
-    [user_name, user_email, user_password, user_address],
+    "INSERT INTO users (username, email, password, address) VALUES ($1, $2, $3, $4) RETURNING *",
+    [username, email, password, address],
     (error, results) => {
       if (error) {
         throw error;
@@ -40,11 +40,11 @@ const createUser = (request, response) => {
 
 const updateUser = (request, response) => {
   const id = parseInt(request.params.id);
-  const { user_name, user_email, user_password, user_address } = request.body;
+  const { username, email, password, address } = request.body;
 
   pool.query(
-    "UPDATE users SET user_name = $1, user_email = $2, user_password = $3 , user_address = $4 WHERE id = $5",
-    [user_name, user_email, user_password, user_address, id],
+    "UPDATE users SET username = $1, email = $2, password = $3 , address = $4 WHERE id = $5",
+    [username, email, password, address, id],
     (error, results) => {
       if (error) {
         throw error;
@@ -66,15 +66,15 @@ const deleteUser = (request, response) => {
 };
 
 const validateLogin = (request, response) => {
-  const { user_name, user_email, user_password, user_address } = req.body;
+  const { username, email, password, address } = req.body;
 
   try {
-    const existingUser = pool.query("SELECT * FROM users WHERE user_name = $1",[user_name]);
+    const existingUser = pool.query("SELECT * FROM users WHERE username = $1",[user_name]);
     
     if (existingUser.rows.length === 0) {
       const newLogin = pool.query(
-        `INSERT INTO users(user_name, user_email, user_password, user_address) VALUES ($1, $2, $3, $4)`,
-        [user_name, user_email, user_password, user_address]
+        `INSERT INTO users(username, email, password, address) VALUES ($1, $2, $3, $4)`,
+        [username, email, password, address]
       );
       return res.status(200).send(newLogin);
     } else {
@@ -87,10 +87,10 @@ const validateLogin = (request, response) => {
 }
 
 const validateEmailUser = async (req, res) => {
-  const { user_name, user_email, user_password, user_address } = req.body;
+  const { username, email, password, address } = req.body;
 
   try {
-    const existEmail = await pool.query('SELECT * FROM users WHERE user_email = $1', [user_email]);
+    const existEmail = await pool.query('SELECT * FROM users WHERE username = $1', [user_email]);
 
     if (existEmail.rows.length !== 0) {
       return res.status(200).json({ exists: true });

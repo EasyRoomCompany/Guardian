@@ -24,11 +24,11 @@ const getCompanyById = (request, response) => {
 };
 
 const createCompany = (request, response) => {
-  const { razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone } = request.body;
+  const { business_name, cnpj, postal_code, email, address, city, neighborhood, telephone } = request.body;
 
   pool.query(
-    "INSERT INTO companies (razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
-    [razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone],
+    "INSERT INTO companies (business_name, cnpj, postal_code, email, address, city, neighborhood, telephone) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+    [business_name, cnpj, postal_code, email, address, city, neighborhood, telephone],
     (error, results) => {
       if (error) {
         throw error;
@@ -40,11 +40,11 @@ const createCompany = (request, response) => {
 
 const updateCompany = (request, response) => {
   const id = parseInt(request.params.id);
-  const { razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone } = request.body;
+  const { business_name, cnpj, postal_code, email, address, city, neighborhood, telephone } = request.body;
 
   pool.query(
-    "UPDATE companies SET user_name = $1, razao_social = $2, cnpj = $3 , cep = $4, email = $5, logradouro = $6, municipio = $7, bairro = $8, telefone = $9 WHERE id = $10",
-    [razao_social, cnpj, cep, email, logradouro, municipio, bairro, telefone, id],
+    "UPDATE companies SET user_name = $1, business_name = $2, cnpj = $3 , postal_code = $4, email = $5, address = $6, city = $7, neighborhood = $8, telephone = $9 WHERE id = $10",
+    [business_name, cnpj, postal_code, email, address, city, neighborhood, telephone, id],
     (error, results) => {
       if (error) {
         throw error;
