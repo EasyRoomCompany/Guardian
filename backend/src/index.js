@@ -19,6 +19,11 @@ app.use(cors());
 // Middleware para fazer o parsing do corpo da solicitação como JSON
 app.use(express.json());
 
+function logQuery(err, req, res, next) {
+  console.log("QueryString", req.query);
+  next(err);
+}
+
 function logErrors(err, req, res, next) {
   console.error(err.stack);
   next(err);
@@ -41,26 +46,29 @@ function errorHandler(err, req, res, next) {
  * Users
  */
 app.get("/users", dbUsers.getUsers);
-app.get("/users/:id", dbUsers.getUsers);
 app.post("/users", dbUsers.createUser);
+
+app.get("/users/:id", dbUsers.getUsers);
 app.put("/users/:id", dbUsers.updateUser);
 app.delete("/users/:id", dbUsers.deleteUser);
 /**
  * Room
  */
-app.get("/rooms", dbRooms.getRoom);
-app.get("/rooms/:id", dbRooms.getRoomById);
-app.post("/rooms", dbRooms.createRoom);
-app.put("/rooms/:id", dbRooms.updateRoom);
 app.get("/rooms/search", dbRooms.searchRooms);
+app.get("/rooms", dbRooms.getRoom);
+app.post("/rooms", dbRooms.createRoom);
+
+app.get("/rooms/:id", dbRooms.getRoomById);
+app.put("/rooms/:id", dbRooms.updateRoom);
 app.delete("/rooms/:id", dbRooms.deleteRoom);
 
 /**
  * Company
  */
 app.get("/companies", dbCompanies.getCompany);
-app.get("/companies/:id", dbCompanies.getCompanyById);
 app.post("/companies", dbCompanies.createCompany);
+
+app.get("/companies/:id", dbCompanies.getCompanyById);
 app.put("/companies/:id", dbCompanies.updateCompany);
 app.delete("/companies/:id", dbCompanies.deleteCompany);
 
@@ -68,8 +76,9 @@ app.delete("/companies/:id", dbCompanies.deleteCompany);
  * Reservation
  */
 app.get("/reservations", dbReservations.getReservation);
-app.get("/reservations/:id", dbReservations.getReservationById);
 app.post("/reservations", dbReservations.createReservation);
+
+app.get("/reservations/:id", dbReservations.getReservationById);
 app.put("/reservations/:id", dbReservations.updateReservation);
 app.delete("/reservations/:id", dbReservations.deleteReservation);
 
@@ -80,6 +89,7 @@ app.delete("/reservations/:id", dbReservations.deleteReservation);
 app.get("/login/:id", dbUsers.validateLogin);
 app.post("/users/validate-email", dbUsers.validateEmailUser);
 
+app.use(logQuery);
 app.use(logErrors);
 app.use(clientErrorHandler);
 app.use(errorHandler);
