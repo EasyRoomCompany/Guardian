@@ -20,6 +20,15 @@ Instructions on how to set up your development environment.
 - [User Management](#user-management)
 - [Room Management](#room-management)
 - [Event Management](#event-management)
+- [Integrated Calendar](#integrated-calendar)
+- [Reports and Statistics](#reports-and-statistics)
+- [Initial setting](#initial-setting)
+- [Technical and Installation Specifications](#technical-and-installation-specifications)
+- [Additional Documentation](#additional-documentation)
+- [Support](#support)
+- [Contributors](#contributors)
+- [License](#license)
+- [Thanks](#thanks)
 
 </details>
 
