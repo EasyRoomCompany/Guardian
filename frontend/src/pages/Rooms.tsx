@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
 import { Request } from "../components/Request";
+import { Response } from "../components/Response";
 import {
   FaCheck,
   FaDoorOpen,
@@ -9,6 +10,7 @@ import {
   FaPlus,
   FaTag,
 } from "react-icons/fa";
+import axios from "axios";
 
 const buttons = [
   {
@@ -59,12 +61,16 @@ const inputsForRoute: InputsForRoute = {
   roominfo: [{ label: "Room ID", name: "roomid", type: "text" }],
   createroom: [
     { label: "Room Name", name: "name", type: "text" },
-    // additional input fields as needed
+    { label: "Capacity", name: "capacity", type: "number" },
+    { label: "Description", name: "description", type: "text" },
+    { label: "Price per Hour", name: "price_hour", type: "number" },
   ],
   updateroom: [
     { label: "Room ID", name: "roomid", type: "text" },
     { label: "New Room Name", name: "newname", type: "text" },
-    // additional input fields as needed
+    { label: "New Capacity", name: "newcapacity", type: "number" },
+    { label: "New Description", name: "newdescription", type: "text" },
+    { label: "New Price per Hour", name: "newprice_hour", type: "number" },
   ],
   deleteroom: [{ label: "Room ID", name: "roomid", type: "text" }],
   listrooms: [],
@@ -78,6 +84,9 @@ export const Rooms = () => {
   >([]);
   const [buttonLabel, setButtonLabel] = useState<string | null>(null);
   const [showRequest, setShowRequest] = useState(false);
+  const [responseMessage, setResponseMessage] = useState<string | null>(null);
+  const [showResponse, setShowResponse] = useState(false);
+  const [responseData, setResponseData] = useState<any[] | null>(null);
 
   const handleClick = (route: Route, label: string) => {
     if (route in inputsForRoute) {
@@ -90,11 +99,96 @@ export const Rooms = () => {
     }
   };
 
-  const handleRequestSubmit = (data: { [key: string]: string }) => {
-    // process form data
-    console.log(data);
-    // hide the modal after processing the form data
+  const handleRequestSubmit = async (data: { [key: string]: string }) => {
+    switch (route) {
+      case "createroom":
+        axios
+          .post("http://localhost:3333/rooms", data)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "updateroom":
+        axios
+          .put(`http://localhost:3333/rooms/${data.roomid}`, data)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "deleteroom":
+        axios
+          .delete(`http://localhost:3333/rooms/${data.roomid}`)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "roominfo":
+        axios
+          .get(`http://localhost:3333/rooms/${data.roomid}`)
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "listrooms":
+        axios
+          .get("http://localhost:3333/rooms")
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "searchroom":
+        axios
+          .get(`http://localhost:3333/rooms/search?term=${data.search}`)
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      default:
+        console.error(`Invalid route: ${route}`);
+        break;
+    }
     setShowRequest(false);
+  };
+
+  const handleCloseResponse = () => {
+    setShowResponse(false);
+    setResponseMessage(null);
   };
 
   return (
@@ -118,6 +212,12 @@ export const Rooms = () => {
           onClose={() => setShowRequest(false)}
         />
       )}
+      <Response
+        message={responseMessage}
+        data={responseData}
+        show={showResponse}
+        onClose={handleCloseResponse}
+      />
     </div>
   );
 };

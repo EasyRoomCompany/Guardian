@@ -54,7 +54,7 @@ export const Request = ({
               type={input.type}
               id={input.name}
               name={input.name}
-              className="p-2 border rounded"
+              className="p-2 border rounded text-gray-900"
               required
               onChange={handleChange}
             />

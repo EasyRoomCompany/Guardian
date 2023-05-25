@@ -71,6 +71,13 @@ const getReservation = (request, response) => {
 
 const getReservationById = (request, response) => {
   const id = parseInt(request.params.id);
+
+  if (isNaN(id)) {
+    return response
+      .status(400)
+      .send("Invalid ID. Please enter a valid number.");
+  }
+
   pool.query(
     "SELECT * FROM reservations WHERE id = $1",
     [id],
@@ -122,6 +129,13 @@ const createReservation = (request, response) => {
 
 const updateReservation = (request, response) => {
   const id = parseInt(request.params.id);
+
+  if (isNaN(id)) {
+    return response
+      .status(400)
+      .send("Invalid ID. Please enter a valid number.");
+  }
+
   const {
     event_category,
     date,
@@ -160,6 +174,12 @@ const updateReservation = (request, response) => {
 const deleteReservation = (request, response) => {
   const id = parseInt(request.params.id);
 
+  if (isNaN(id)) {
+    return response
+      .status(400)
+      .send("Invalid ID. Please enter a valid number.");
+  }
+
   pool.query(
     "DELETE FROM reservations WHERE id = $1",
     [id],
@@ -174,7 +194,7 @@ const deleteReservation = (request, response) => {
   );
 };
 
-const searchEvent = (request, response) => {
+const searchReservation = (request, response) => {
   const searchTerm = request.query.term;
 
   pool.query(
@@ -195,5 +215,5 @@ module.exports = {
   createReservation,
   updateReservation,
   deleteReservation,
-  searchEvent,
+  searchReservation,
 };
