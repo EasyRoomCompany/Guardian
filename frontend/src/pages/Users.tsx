@@ -1,6 +1,8 @@
 import { useState } from "react";
+import axios from "axios";
 import { Button } from "../components/Button";
 import { Request } from "../components/Request";
+import { ResponseUsers } from "../components/ResponseUsers";
 import {
   FaUserMinus,
   FaUserPlus,
@@ -28,16 +30,11 @@ const buttons = [
     icon: [<FaUserMinus size="2em" />],
     route: "deleteuser",
   },
-  { label: "List Users", icon: [<FaUsers size="2em" />], route: "listuser" },
+  { label: "List Users", icon: [<FaUsers size="2em" />], route: "listusers" },
   {
     label: "Search User",
     icon: [<FaUserCheck size="2em" />],
     route: "searchuser",
-  },
-  {
-    label: "User Authorization",
-    icon: [<FaUserShield size="2em" />],
-    route: "userauth",
   },
 ];
 
@@ -46,9 +43,8 @@ type Route =
   | "createuser"
   | "updateuser"
   | "deleteuser"
-  | "listuser"
-  | "searchuser"
-  | "userauth";
+  | "listusers"
+  | "searchuser";
 
 type InputsForRoute = {
   [key in Route]?: { label: string; name: string; type: string }[];
@@ -59,17 +55,14 @@ const inputsForRoute: InputsForRoute = {
   createuser: [
     { label: "Name", name: "name", type: "text" },
     { label: "Email", name: "email", type: "email" },
-    // additional input fields as needed
   ],
   updateuser: [
     { label: "User ID", name: "userid", type: "text" },
     { label: "New Name", name: "newname", type: "text" },
-    // additional input fields as needed
   ],
   deleteuser: [{ label: "User ID", name: "userid", type: "text" }],
-  listuser: [],
+  listusers: [],
   searchuser: [{ label: "Search Term", name: "search", type: "text" }],
-  userauth: [{ label: "User ID", name: "userid", type: "text" }],
 };
 
 export const Users = () => {
@@ -79,6 +72,10 @@ export const Users = () => {
   >([]);
   const [buttonLabel, setButtonLabel] = useState<string | null>(null);
   const [showRequest, setShowRequest] = useState(false);
+  const [usersData, setUsersData] = useState<any[]>([]);
+  const [responseMessage, setResponseMessage] = useState("");
+  const [showResponse, setShowResponse] = useState(false);
+  const [responseData, setResponseData] = useState([]);
 
   const handleClick = (route: Route, label: string) => {
     if (route in inputsForRoute) {
@@ -91,10 +88,90 @@ export const Users = () => {
     }
   };
 
-  const handleRequestSubmit = (data: { [key: string]: string }) => {
-    // process form data
-    console.log(data);
-    // hide the modal after processing the form data
+  const handleRequestSubmit = async (data: { [key: string]: string }) => {
+    switch (route) {
+      case "createuser":
+        axios
+          .post("http://localhost:3333/users", data)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "updateuser":
+        axios
+          .put(`http://localhost:3333/users/${data.userid}`, data)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "deleteuser":
+        axios
+          .delete(`http://localhost:3333/users/${data.userid}`)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "userinfo":
+        axios
+          .get(`http://localhost:3333/users/${data.userid}`)
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "listusers":
+        axios
+          .get("http://localhost:3333/users")
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "searchuser":
+        axios
+          .get(`http://localhost:3333/users/search?term=${data.search}`)
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      default:
+        console.error(`Invalid route: ${route}`);
+        break;
+    }
     setShowRequest(false);
   };
 
@@ -119,6 +196,7 @@ export const Users = () => {
           onClose={() => setShowRequest(false)}
         />
       )}
+      {usersData.length > 0 && <ResponseUsers users={usersData} />}
     </div>
   );
 };

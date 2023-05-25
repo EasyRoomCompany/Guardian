@@ -47,7 +47,7 @@ function errorHandler(err, req, res, next) {
  */
 app.get("/users", dbUsers.getUsers);
 app.post("/users", dbUsers.createUser);
-
+app.get("/users/search", dbUsers.searchUser);
 app.get("/users/:id", dbUsers.getUsers);
 app.put("/users/:id", dbUsers.updateUser);
 app.delete("/users/:id", dbUsers.deleteUser);
@@ -86,8 +86,8 @@ app.delete("/reservations/:id", dbReservations.deleteReservation);
  * Validations
  */
 
-app.get("/login/:id", dbUsers.validateLogin);
-app.post("/users/validate-email", dbUsers.validateEmailUser);
+// app.get("/login/:id", dbUsers.validateLogin);
+// app.post("/users/validate-email", dbUsers.validateEmailUser);
 
 app.use(logQuery);
 app.use(logErrors);
