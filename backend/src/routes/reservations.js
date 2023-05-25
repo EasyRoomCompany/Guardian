@@ -3,14 +3,71 @@ const pool = new Pool({
   connectionString: process.env.POSTGRESS_URL,
 });
 
+// const getReservation = (request, response) => {
+//   pool.query("SELECT * FROM reservations ORDER BY id ASC", (error, results) => {
+//     if (error) {
+//       throw error;
+//     }
+//     response.status(200).json(results.rows);
+//   });
+// };
+
 const getReservation = (request, response) => {
-  pool.query("SELECT * FROM reservations ORDER BY id ASC", (error, results) => {
+  pool.query(`
+    SELECT reservations.id, reservations.event_category, reservations.date, 
+           reservations.start_time, reservations.end_time, 
+           reservations.access_key, reservations.status, 
+           users.id AS user_id, users.username AS user_name, 
+           rooms.id AS room_id, rooms.name AS room_name
+    FROM reservations
+    INNER JOIN users ON reservations.users_id = users.id
+    INNER JOIN rooms ON reservations.rooms_id = rooms.id
+    ORDER BY reservations.id ASC
+  `, (error, results) => {
     if (error) {
       throw error;
     }
-    response.status(200).json(results.rows);
+
+    const reservations = results.rows.map(row => {
+      const {
+        id,
+        event_category,
+        date,
+        start_time,
+        end_time,
+        access_key,
+        status,
+        user_id,
+        user_name,
+        room_id,
+        room_name
+      } = row;
+
+      return {
+        id,
+        event_category,
+        date,
+        start_time,
+        end_time,
+        access_key,
+        status,
+        user: {
+          id: user_id,
+          username: user_name
+        },
+        room: {
+          id: room_id,
+          name: room_name
+        }
+      };
+    });
+
+    response.status(200).json(reservations);
   });
 };
+
+
+
 
 const getReservationById = (request, response) => {
   const id = parseInt(request.params.id);
