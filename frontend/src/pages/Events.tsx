@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
 import { Request } from "../components/Request";
+import { ResponseEvents } from "../components/ResponseEvents";
 import {
   FaCalendar,
   FaCheck,
@@ -9,6 +10,7 @@ import {
   FaPlus,
   FaTag,
 } from "react-icons/fa";
+import axios from "axios";
 
 const buttons = [
   {
@@ -56,17 +58,22 @@ type InputsForRoute = {
 };
 
 const inputsForRoute: InputsForRoute = {
-  eventinfo: [{ label: "Event ID", name: "eventid", type: "text" }],
+  eventinfo: [{ label: "Event ID", name: "id", type: "text" }],
   createevent: [
-    { label: "Event Name", name: "name", type: "text" },
-    // additional input fields as needed
+    { label: "Event Category", name: "event_category", type: "text" },
+    { label: "Date", name: "date", type: "date" },
+    { label: "Start Time", name: "start_time", type: "time" },
+    { label: "Room ID", name: "rooms_id", type: "text" },
+    { label: "User ID", name: "users_id", type: "text" },
   ],
   updateevent: [
-    { label: "Event ID", name: "eventid", type: "text" },
-    { label: "New Event Name", name: "newname", type: "text" },
-    // additional input fields as needed
+    { label: "Event ID", name: "id", type: "text" },
+    { label: "Event Category", name: "event_category", type: "text" },
+    { label: "Date", name: "date", type: "date" },
+    { label: "Start Time", name: "start_time", type: "time" },
+    { label: "Room ID", name: "rooms_id", type: "text" },
   ],
-  deleteevent: [{ label: "Event ID", name: "eventid", type: "text" }],
+  deleteevent: [{ label: "Event ID", name: "id", type: "text" }],
   listevents: [],
   searchevent: [{ label: "Search Term", name: "search", type: "text" }],
 };
@@ -78,6 +85,9 @@ export const Events = () => {
   >([]);
   const [buttonLabel, setButtonLabel] = useState<string | null>(null);
   const [showRequest, setShowRequest] = useState(false);
+  const [responseMessage, setResponseMessage] = useState<string | null>(null);
+  const [showResponse, setShowResponse] = useState(false);
+  const [responseData, setResponseData] = useState<any[] | null>(null);
 
   const handleClick = (route: Route, label: string) => {
     if (route in inputsForRoute) {
@@ -90,11 +100,101 @@ export const Events = () => {
     }
   };
 
-  const handleRequestSubmit = (data: { [key: string]: string }) => {
+  const handleRequestSubmit = async (data: { [key: string]: string }) => {
+    switch (route) {
+      case "eventinfo":
+        axios
+          .get(`http://localhost:3333/reservations/${data.id}`)
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "createevent":
+        axios
+          .post("http://localhost:3333/reservations", data)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "updateevent":
+        axios
+          .put(`http://localhost:3333/reservations/${data.id}`, data)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "deleteevent":
+        axios
+          .delete(`http://localhost:3333/reservations/${data.id}`)
+          .then((response) => {
+            setResponseMessage(response.data.message);
+            setShowResponse(true);
+            setResponseData([]);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "listevents":
+        axios
+          .get("http://localhost:3333/reservations")
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      case "searchevent":
+        axios
+          .get(`http://localhost:3333/reservations/search?term=${data.search}`)
+          .then((response) => {
+            setResponseMessage("Search results:");
+            setResponseData(response.data);
+            setShowResponse(true);
+          })
+          .catch((error) => {
+            setResponseMessage(`Error: ${error.message}`);
+            setShowResponse(true);
+          });
+        break;
+      default:
+        console.error(`Invalid route: ${route}`);
+        break;
+    }
+
     // process form data
     console.log(data);
+
     // hide the modal after processing the form data
     setShowRequest(false);
+  };
+
+  const handleCloseResponse = () => {
+    setShowResponse(false);
+    setResponseMessage(null);
   };
 
   return (
@@ -118,6 +218,12 @@ export const Events = () => {
           onClose={() => setShowRequest(false)}
         />
       )}
+      <ResponseEvents
+        message={responseMessage}
+        data={responseData}
+        show={showResponse}
+        onClose={handleCloseResponse}
+      />
     </div>
   );
 };

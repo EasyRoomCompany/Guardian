@@ -13,6 +13,7 @@ const getRoom = (request, response) => {
 };
 
 const getRoomById = (request, response) => {
+  // console.log("QueryString", request.query);
   const id = parseInt(request.params.id);
 
   pool.query("SELECT * FROM rooms WHERE id = $1", [id], (error, results) => {
@@ -33,23 +34,45 @@ const createRoom = (request, response) => {
       if (error) {
         throw error;
       }
-      response.status(201).send(`Room added with ID: ${results.rows[0].id}`);
+      response
+        .status(201)
+        .json({ message: `Room added with ID: ${results.rows[0].id}` });
     }
   );
 };
 
 const updateRoom = (request, response) => {
-  const id = parseInt(request.params.id);
-  const { capacity, description, name, price_hour } = request.body;
+  const id = parseInt(request.body.roomid);
+  const capacity = request.body.newcapacity;
+  const description = request.body.newdescription;
+  const name = request.body.newname;
+  const price_hour = parseFloat(request.body.newprice_hour);
 
   pool.query(
     "UPDATE rooms SET capacity = $1, description = $2, name = $3 , price_hour = $4 WHERE id = $5",
-    [capacity, description, name, price_hour, id],
+    [+capacity, description, name, +price_hour, +id],
     (error, results) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`Room modified with ID: ${id}`);
+      response.status(200).json({ message: `Room modified with ID: ${id}` });
+    }
+  );
+};
+
+const searchRooms = (request, response) => {
+  const searchTerm = request.query.term;
+  // console.log("searchTerm", searchTerm);
+  pool.query(
+    "SELECT * FROM rooms WHERE CAST(name AS TEXT) ILIKE $1 OR CAST(description AS TEXT) ILIKE $1",
+    [`%${searchTerm}%`],
+    (error, results) => {
+      // console.log("error", error);
+      // console.log("result", results);
+      if (error) {
+        throw error;
+      }
+      response.status(200).json(results.rows);
     }
   );
 };
@@ -57,11 +80,11 @@ const updateRoom = (request, response) => {
 const deleteRoom = (request, response) => {
   const id = parseInt(request.params.id);
 
-  pool.query('DELETE FROM rooms WHERE id = $1', [id], (error, results) => {
+  pool.query("DELETE FROM rooms WHERE id = $1", [id], (error, results) => {
     if (error) {
       throw error;
     }
-    response.status(200).send(`Room deleted with ID: ${id}`);
+    response.status(200).json({ message: `Room deleted with ID: ${id}` });
   });
 };
 
@@ -70,5 +93,6 @@ module.exports = {
   getRoomById,
   createRoom,
   updateRoom,
+  searchRooms,
   deleteRoom,
 };
