@@ -71,7 +71,6 @@ const getReservation = (request, response) => {
 
 const getReservationById = (request, response) => {
   const id = parseInt(request.params.id);
-
   pool.query(
     "SELECT * FROM reservations WHERE id = $1",
     [id],
@@ -151,7 +150,9 @@ const updateReservation = (request, response) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`Reservation modified with ID: ${id}`);
+      response
+        .status(200)
+        .json({ message: `Reservation modified with ID: ${id}` });
     }
   );
 };
@@ -194,4 +195,5 @@ module.exports = {
   createReservation,
   updateReservation,
   deleteReservation,
+  searchEvent,
 };
