@@ -42,17 +42,20 @@ const createRoom = (request, response) => {
 };
 
 const updateRoom = (request, response) => {
-  const id = parseInt(request.params.id);
-  const { capacity, description, name, price_hour } = request.body;
+  const id = parseInt(request.body.roomid);
+  const capacity = request.body.newcapacity;
+  const description = request.body.newdescription;
+  const name = request.body.newname;
+  const price_hour = parseFloat(request.body.newprice_hour);
 
   pool.query(
     "UPDATE rooms SET capacity = $1, description = $2, name = $3 , price_hour = $4 WHERE id = $5",
-    [capacity, description, name, price_hour, id],
+    [+capacity, description, name, +price_hour, +id],
     (error, results) => {
       if (error) {
         throw error;
       }
-      response.status(200).send(`Room modified with ID: ${id}`);
+      response.status(200).json({ message: `Room modified with ID: ${id}` });
     }
   );
 };
