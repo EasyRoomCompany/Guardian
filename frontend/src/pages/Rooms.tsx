@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/Button";
 import { Request } from "../components/Request";
-import { Response } from "../components/Response";
+import { ResponseRooms } from "../components/ResponseRooms";
 import {
   FaCheck,
   FaDoorOpen,
@@ -212,7 +212,7 @@ export const Rooms = () => {
           onClose={() => setShowRequest(false)}
         />
       )}
-      <Response
+      <ResponseRooms
         message={responseMessage}
         data={responseData}
         show={showResponse}

@@ -5,19 +5,19 @@ import { useEffect, useState } from "react";
 export const Home = () => {
   // Fictitious data for RecentActivities component
 
-  const [activities, setActivities] = useState([])
+  const [activities, setActivities] = useState([]);
 
   const getActivities = () => {
     fetch("http://localhost:3333/reservations")
-    .then(resp => resp.json())
-    .then(dados => {
-        setActivities(dados)
-    })
-  }
+      .then((resp) => resp.json())
+      .then((dados) => {
+        setActivities(dados);
+      });
+  };
 
   useEffect(() => {
-    getActivities()
-  }, [])
+    getActivities();
+  }, []);
 
   // const activities = [
   //   {
@@ -43,8 +43,8 @@ export const Home = () => {
   return (
     <div className="dashboard-content flex-grow p-4">
       <div className="statistics flex flex-col space-y-4 lg:space-y-0 lg:flex-row lg:space-x-4 my-4">
-        <Statistics title="Current Rooms in Use" value={42} />
-        <Statistics title="Events Occurred" value={122} />
+        <Statistics title="Available Rooms" value={42} />
+        <Statistics title="Events Registered" value={122} />
         <Statistics title="Number of Users" value={61} />
       </div>
       <div className="my-4">

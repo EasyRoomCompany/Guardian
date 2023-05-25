@@ -7,7 +7,12 @@ interface ResponseProps {
   onClose: () => void;
 }
 
-export const Response = ({ message, data, show, onClose }: ResponseProps) => {
+export const ResponseRooms = ({
+  message,
+  data,
+  show,
+  onClose,
+}: ResponseProps) => {
   return (
     <div
       className={`fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 transition-opacity duration-500 ease-in-out ${

@@ -97,6 +97,7 @@ export const Users = () => {
             setResponseMessage(response.data.message);
             setShowResponse(true);
             setResponseData([]);
+            setUsersData([response.data.user]); // Update usersData with the created user
           })
           .catch((error) => {
             setResponseMessage(`Error: ${error.message}`);
@@ -110,6 +111,7 @@ export const Users = () => {
             setResponseMessage(response.data.message);
             setShowResponse(true);
             setResponseData([]);
+            setUsersData([response.data.user]); // Update usersData with the updated user
           })
           .catch((error) => {
             setResponseMessage(`Error: ${error.message}`);
@@ -123,6 +125,7 @@ export const Users = () => {
             setResponseMessage(response.data.message);
             setShowResponse(true);
             setResponseData([]);
+            setUsersData([]); // Clear usersData after deleting the user
           })
           .catch((error) => {
             setResponseMessage(`Error: ${error.message}`);
@@ -136,6 +139,7 @@ export const Users = () => {
             setResponseMessage("Search results:");
             setResponseData(response.data);
             setShowResponse(true);
+            setUsersData([response.data]); // Update usersData with the retrieved user
           })
           .catch((error) => {
             setResponseMessage(`Error: ${error.message}`);
@@ -149,6 +153,13 @@ export const Users = () => {
             setResponseMessage("Search results:");
             setResponseData(response.data);
             setShowResponse(true);
+            setUsersData(
+              response.data.map((user: any) => ({
+                id: user.id,
+                email: user.email,
+                name: user.name, // Include the name field
+              }))
+            );
           })
           .catch((error) => {
             setResponseMessage(`Error: ${error.message}`);
@@ -162,6 +173,7 @@ export const Users = () => {
             setResponseMessage("Search results:");
             setResponseData(response.data);
             setShowResponse(true);
+            setUsersData(response.data); // Update usersData with the search results
           })
           .catch((error) => {
             setResponseMessage(`Error: ${error.message}`);
@@ -196,7 +208,14 @@ export const Users = () => {
           onClose={() => setShowRequest(false)}
         />
       )}
-      {usersData.length > 0 && <ResponseUsers users={usersData} />}
+      {usersData.length > 0 && (
+        <ResponseUsers
+          message="User data:"
+          data={usersData}
+          show={true}
+          onClose={() => setUsersData([])}
+        />
+      )}
     </div>
   );
 };
