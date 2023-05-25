@@ -70,11 +70,6 @@ See the full API documentation for more details on available endpoints.
 
 <p align="right">(<a href="#getting-started">top</a>)</p>
 
-# Tests
-
-<p align="right">(<a href="#getting-started">top</a>)</p>
-
-
 
 
 # Contribution
@@ -82,6 +77,12 @@ See the full API documentation for more details on available endpoints.
 If you want to contribute to the project, visit the [contributing](/CONTRIBUTING.md) link for more information.
 
 <p align="right">(<a href="#getting-started">top</a>)</p>
+
+
+
+# Authors
+
+[![Contributors](https://contributors-img.web.app/image?repo=HackathonTeam05/Guardian)](https://github.com/HackathonTeam05/Guardian/graphs/contributors) 
 
 
 
